@@ -1,0 +1,3128 @@
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 1
+
+
+   1               		.file	"asuro.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.section	.debug_abbrev,"",@progbits
+   9               	.Ldebug_abbrev0:
+  10               		.section	.debug_info,"",@progbits
+  11               	.Ldebug_info0:
+  12               		.section	.debug_line,"",@progbits
+  13               	.Ldebug_line0:
+  14               		.text
+  15               	.Ltext0:
+  16               	.global	__vector_3
+  17               		.type	__vector_3, @function
+  18               	__vector_3:
+  19               	.LFB2:
+  20               	.LM1:
+  21 0000 1F92      		push __zero_reg__
+  22 0002 0F92      		push r0
+  23 0004 0FB6      		in r0,__SREG__
+  24 0006 0F92      		push r0
+  25 0008 1124      		clr __zero_reg__
+  26 000a 8F93      		push r24
+  27 000c 9F93      		push r25
+  28 000e AF93      		push r26
+  29 0010 BF93      		push r27
+  30               	/* prologue: Signal */
+  31               	/* frame size = 0 */
+  32               	.LM2:
+  33 0012 8091 0000 		lds r24,count72kHz
+  34 0016 8F5F      		subi r24,lo8(-(1))
+  35 0018 8093 0000 		sts count72kHz,r24
+  36               	.LM3:
+  37 001c 8091 0000 		lds r24,timebase
+  38 0020 9091 0000 		lds r25,(timebase)+1
+  39 0024 A091 0000 		lds r26,(timebase)+2
+  40 0028 B091 0000 		lds r27,(timebase)+3
+  41 002c 0196      		adiw r24,1
+  42 002e A11D      		adc r26,__zero_reg__
+  43 0030 B11D      		adc r27,__zero_reg__
+  44 0032 8093 0000 		sts timebase,r24
+  45 0036 9093 0000 		sts (timebase)+1,r25
+  46 003a A093 0000 		sts (timebase)+2,r26
+  47 003e B093 0000 		sts (timebase)+3,r27
+  48               	/* epilogue start */
+  49               	.LM4:
+  50 0042 BF91      		pop r27
+  51 0044 AF91      		pop r26
+  52 0046 9F91      		pop r25
+  53 0048 8F91      		pop r24
+  54 004a 0F90      		pop r0
+  55 004c 0FBE      		out __SREG__,r0
+  56 004e 0F90      		pop r0
+  57 0050 1F90      		pop __zero_reg__
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 2
+
+
+  58 0052 1895      		reti
+  59               	.LFE2:
+  60               		.size	__vector_3, .-__vector_3
+  61               	.global	MotorSpeed
+  62               		.type	MotorSpeed, @function
+  63               	MotorSpeed:
+  64               	.LFB4:
+  65               	.LM5:
+  66               	.LVL0:
+  67               	/* prologue: function */
+  68               	/* frame size = 0 */
+  69               	.LM6:
+  70 0054 90E0      		ldi r25,lo8(0)
+  71 0056 9BBD      		out (74)+1-32,r25
+  72 0058 8ABD      		out 74-32,r24
+  73               	.LVL1:
+  74               	.LM7:
+  75 005a 70E0      		ldi r23,lo8(0)
+  76 005c 79BD      		out (72)+1-32,r23
+  77 005e 68BD      		out 72-32,r22
+  78               	.LVL2:
+  79               	/* epilogue start */
+  80               	.LM8:
+  81 0060 0895      		ret
+  82               	.LFE4:
+  83               		.size	MotorSpeed, .-MotorSpeed
+  84               	.global	MotorDir
+  85               		.type	MotorDir, @function
+  86               	MotorDir:
+  87               	.LFB5:
+  88               	.LM9:
+  89               	.LVL3:
+  90               	/* prologue: function */
+  91               	/* frame size = 0 */
+  92               	.LM10:
+  93 0062 92B3      		in r25,50-32
+  94 0064 9F7C      		andi r25,lo8(-49)
+  95 0066 982B      		or r25,r24
+  96 0068 92BB      		out 50-32,r25
+  97               	.LM11:
+  98 006a 88B3      		in r24,56-32
+  99               	.LVL4:
+ 100 006c 8F7C      		andi r24,lo8(-49)
+ 101 006e 862B      		or r24,r22
+ 102 0070 88BB      		out 56-32,r24
+ 103               	/* epilogue start */
+ 104               	.LM12:
+ 105 0072 0895      		ret
+ 106               	.LFE5:
+ 107               		.size	MotorDir, .-MotorDir
+ 108               	.global	StatusLED
+ 109               		.type	StatusLED, @function
+ 110               	StatusLED:
+ 111               	.LFB6:
+ 112               	.LM13:
+ 113               	.LVL5:
+ 114               	/* prologue: function */
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 3
+
+
+ 115               	/* frame size = 0 */
+ 116               	.LM14:
+ 117 0074 8823      		tst r24
+ 118 0076 01F4      		brne .L8
+ 119 0078 C098      		cbi 56-32,0
+ 120 007a 00C0      		rjmp .L13
+ 121               	.L8:
+ 122               	.LM15:
+ 123 007c 8130      		cpi r24,lo8(1)
+ 124 007e 01F4      		brne .L10
+ 125 0080 C09A      		sbi 56-32,0
+ 126               	.L13:
+ 127 0082 9298      		cbi 50-32,2
+ 128 0084 0895      		ret
+ 129               	.L10:
+ 130               	.LM16:
+ 131 0086 8330      		cpi r24,lo8(3)
+ 132 0088 01F4      		brne .L11
+ 133 008a C09A      		sbi 56-32,0
+ 134 008c 929A      		sbi 50-32,2
+ 135 008e 0895      		ret
+ 136               	.L11:
+ 137               	.LM17:
+ 138 0090 8230      		cpi r24,lo8(2)
+ 139 0092 01F4      		brne .L12
+ 140 0094 C098      		cbi 56-32,0
+ 141 0096 929A      		sbi 50-32,2
+ 142               	.L12:
+ 143 0098 0895      		ret
+ 144               	.LFE6:
+ 145               		.size	StatusLED, .-StatusLED
+ 146               	.global	FrontLED
+ 147               		.type	FrontLED, @function
+ 148               	FrontLED:
+ 149               	.LFB7:
+ 150               	.LM18:
+ 151               	.LVL6:
+ 152               	/* prologue: function */
+ 153               	/* frame size = 0 */
+ 154               	.LM19:
+ 155 009a 92B3      		in r25,50-32
+ 156 009c 8295      		swap r24
+ 157               	.LVL7:
+ 158 009e 880F      		lsl r24
+ 159 00a0 880F      		lsl r24
+ 160 00a2 807C      		andi r24,lo8(-64)
+ 161 00a4 9F7B      		andi r25,lo8(-65)
+ 162 00a6 982B      		or r25,r24
+ 163 00a8 92BB      		out 50-32,r25
+ 164               	/* epilogue start */
+ 165               	.LM20:
+ 166 00aa 0895      		ret
+ 167               	.LFE7:
+ 168               		.size	FrontLED, .-FrontLED
+ 169               	.global	BackLED
+ 170               		.type	BackLED, @function
+ 171               	BackLED:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 4
+
+
+ 172               	.LFB8:
+ 173               	.LM21:
+ 174               	.LVL8:
+ 175               	/* prologue: function */
+ 176               	/* frame size = 0 */
+ 177 00ac 982F      		mov r25,r24
+ 178               	.LM22:
+ 179 00ae 8823      		tst r24
+ 180 00b0 01F4      		brne .L17
+ 181 00b2 6623      		tst r22
+ 182 00b4 01F0      		breq .L18
+ 183               	.L17:
+ 184               	.LM23:
+ 185 00b6 9798      		cbi 50-32,7
+ 186               	.LM24:
+ 187 00b8 84B3      		in r24,52-32
+ 188               	.LVL9:
+ 189 00ba 8360      		ori r24,lo8(3)
+ 190 00bc 84BB      		out 52-32,r24
+ 191               	.LM25:
+ 192 00be 85B3      		in r24,53-32
+ 193 00c0 8360      		ori r24,lo8(3)
+ 194 00c2 85BB      		out 53-32,r24
+ 195               	.LM26:
+ 196 00c4 9923      		tst r25
+ 197 00c6 01F4      		brne .L19
+ 198               	.LVL10:
+ 199               	.L18:
+ 200 00c8 A998      		cbi 53-32,1
+ 201               	.L19:
+ 202               	.LM27:
+ 203 00ca 6623      		tst r22
+ 204 00cc 01F4      		brne .L21
+ 205 00ce A898      		cbi 53-32,0
+ 206               	.L21:
+ 207 00d0 0895      		ret
+ 208               	.LFE8:
+ 209               		.size	BackLED, .-BackLED
+ 210               	.global	Init
+ 211               		.type	Init, @function
+ 212               	Init:
+ 213               	.LFB3:
+ 214               	.LM28:
+ 215               	/* prologue: function */
+ 216               	/* frame size = 0 */
+ 217               	.LM29:
+ 218 00d2 89E1      		ldi r24,lo8(25)
+ 219 00d4 85BD      		out 69-32,r24
+ 220               	.LM30:
+ 221 00d6 8EE6      		ldi r24,lo8(110)
+ 222 00d8 83BD      		out 67-32,r24
+ 223               	.LM31:
+ 224 00da 89B7      		in r24,89-32
+ 225 00dc 8068      		ori r24,lo8(-128)
+ 226 00de 89BF      		out 89-32,r24
+ 227               	.LM32:
+ 228 00e0 1BB8      		out 43-32,__zero_reg__
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 5
+
+
+ 229               	.LM33:
+ 230 00e2 1AB8      		out 42-32,__zero_reg__
+ 231               	.LM34:
+ 232 00e4 96E8      		ldi r25,lo8(-122)
+ 233 00e6 90BD      		out 64-32,r25
+ 234               	.LM35:
+ 235 00e8 8FEC      		ldi r24,lo8(-49)
+ 236 00ea 89B9      		out 41-32,r24
+ 237               	.LM36:
+ 238 00ec 8FE3      		ldi r24,lo8(63)
+ 239 00ee 87BB      		out 55-32,r24
+ 240               	.LM37:
+ 241 00f0 84EF      		ldi r24,lo8(-12)
+ 242 00f2 81BB      		out 49-32,r24
+ 243               	.LM38:
+ 244 00f4 81EA      		ldi r24,lo8(-95)
+ 245 00f6 8FBD      		out 79-32,r24
+ 246               	.LM39:
+ 247 00f8 82E0      		ldi r24,lo8(2)
+ 248 00fa 8EBD      		out 78-32,r24
+ 249               	.LM40:
+ 250 00fc 96B9      		out 38-32,r25
+ 251               	.LM41:
+ 252 00fe 9798      		cbi 50-32,7
+ 253               	.LBB12:
+ 254               	.LBB13:
+ 255               	.LM42:
+ 256 0100 9698      		cbi 50-32,6
+ 257               	.LBE13:
+ 258               	.LBE12:
+ 259               	.LM43:
+ 260 0102 81E0      		ldi r24,lo8(1)
+ 261 0104 61E0      		ldi r22,lo8(1)
+ 262 0106 00D0      		rcall BackLED
+ 263               	.LM44:
+ 264 0108 80E0      		ldi r24,lo8(0)
+ 265 010a 60E0      		ldi r22,lo8(0)
+ 266 010c 00D0      		rcall BackLED
+ 267               	.LM45:
+ 268 010e 81E0      		ldi r24,lo8(1)
+ 269 0110 00D0      		rcall StatusLED
+ 270               	.LBB14:
+ 271               	.LBB15:
+ 272               	.LM46:
+ 273 0112 82B3      		in r24,50-32
+ 274 0114 8F7C      		andi r24,lo8(-49)
+ 275 0116 8062      		ori r24,lo8(32)
+ 276 0118 82BB      		out 50-32,r24
+ 277               	.LM47:
+ 278 011a 88B3      		in r24,56-32
+ 279 011c 8F7C      		andi r24,lo8(-49)
+ 280 011e 8062      		ori r24,lo8(32)
+ 281 0120 88BB      		out 56-32,r24
+ 282               	.LBE15:
+ 283               	.LBE14:
+ 284               	.LBB16:
+ 285               	.LBB17:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 6
+
+
+ 286               	.LM48:
+ 287 0122 1BBC      		out (74)+1-32,__zero_reg__
+ 288 0124 1ABC      		out 74-32,__zero_reg__
+ 289               	.LM49:
+ 290 0126 19BC      		out (72)+1-32,__zero_reg__
+ 291 0128 18BC      		out 72-32,__zero_reg__
+ 292               	.LBE17:
+ 293               	.LBE16:
+ 294               	.LM50:
+ 295               	/* #APP */
+ 296               	 ;  77 "asuro.c" 1
+ 297 012a 7894      		sei
+ 298               	 ;  0 "" 2
+ 299               	/* epilogue start */
+ 300               	.LM51:
+ 301               	/* #NOAPP */
+ 302 012c 0895      		ret
+ 303               	.LFE3:
+ 304               		.size	Init, .-Init
+ 305               	.global	LineData
+ 306               		.type	LineData, @function
+ 307               	LineData:
+ 308               	.LFB9:
+ 309               	.LM52:
+ 310               	.LVL11:
+ 311               	/* prologue: function */
+ 312               	/* frame size = 0 */
+ 313 012e FC01      		movw r30,r24
+ 314               	.LM53:
+ 315 0130 83E4      		ldi r24,lo8(67)
+ 316               	.LVL12:
+ 317 0132 87B9      		out 39-32,r24
+ 318               	.LM54:
+ 319 0134 369A      		sbi 38-32,6
+ 320               	.L25:
+ 321               	.LM55:
+ 322 0136 349B      		sbis 38-32,4
+ 323 0138 00C0      		rjmp .L25
+ 324               	.LM56:
+ 325 013a 349A      		sbi 38-32,4
+ 326               	.LM57:
+ 327 013c 34B1      		in r19,36-32
+ 328 013e 25B1      		in r18,37-32
+ 329 0140 922F      		mov r25,r18
+ 330 0142 80E0      		ldi r24,lo8(0)
+ 331 0144 830F      		add r24,r19
+ 332 0146 911D      		adc r25,__zero_reg__
+ 333 0148 9183      		std Z+1,r25
+ 334 014a 8083      		st Z,r24
+ 335               	.LM58:
+ 336 014c 82E4      		ldi r24,lo8(66)
+ 337 014e 87B9      		out 39-32,r24
+ 338               	.LM59:
+ 339 0150 369A      		sbi 38-32,6
+ 340               	.L26:
+ 341               	.LM60:
+ 342 0152 349B      		sbis 38-32,4
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 7
+
+
+ 343 0154 00C0      		rjmp .L26
+ 344               	.LM61:
+ 345 0156 349A      		sbi 38-32,4
+ 346               	.LM62:
+ 347 0158 34B1      		in r19,36-32
+ 348 015a 25B1      		in r18,37-32
+ 349 015c 922F      		mov r25,r18
+ 350 015e 80E0      		ldi r24,lo8(0)
+ 351 0160 830F      		add r24,r19
+ 352 0162 911D      		adc r25,__zero_reg__
+ 353 0164 9383      		std Z+3,r25
+ 354 0166 8283      		std Z+2,r24
+ 355               	/* epilogue start */
+ 356               	.LM63:
+ 357 0168 0895      		ret
+ 358               	.LFE9:
+ 359               		.size	LineData, .-LineData
+ 360               	.global	OdometrieData
+ 361               		.type	OdometrieData, @function
+ 362               	OdometrieData:
+ 363               	.LFB10:
+ 364               	.LM64:
+ 365               	.LVL13:
+ 366               	/* prologue: function */
+ 367               	/* frame size = 0 */
+ 368 016a FC01      		movw r30,r24
+ 369               	.LM65:
+ 370 016c 84B3      		in r24,52-32
+ 371               	.LVL14:
+ 372 016e 8C7F      		andi r24,lo8(-4)
+ 373 0170 84BB      		out 52-32,r24
+ 374               	.LM66:
+ 375 0172 979A      		sbi 50-32,7
+ 376               	.LM67:
+ 377 0174 81E4      		ldi r24,lo8(65)
+ 378 0176 87B9      		out 39-32,r24
+ 379               	.LM68:
+ 380 0178 369A      		sbi 38-32,6
+ 381               	.L31:
+ 382               	.LM69:
+ 383 017a 349B      		sbis 38-32,4
+ 384 017c 00C0      		rjmp .L31
+ 385               	.LM70:
+ 386 017e 349A      		sbi 38-32,4
+ 387               	.LM71:
+ 388 0180 34B1      		in r19,36-32
+ 389 0182 25B1      		in r18,37-32
+ 390 0184 922F      		mov r25,r18
+ 391 0186 80E0      		ldi r24,lo8(0)
+ 392 0188 830F      		add r24,r19
+ 393 018a 911D      		adc r25,__zero_reg__
+ 394 018c 9183      		std Z+1,r25
+ 395 018e 8083      		st Z,r24
+ 396               	.LM72:
+ 397 0190 80E4      		ldi r24,lo8(64)
+ 398 0192 87B9      		out 39-32,r24
+ 399               	.LM73:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 8
+
+
+ 400 0194 369A      		sbi 38-32,6
+ 401               	.L32:
+ 402               	.LM74:
+ 403 0196 349B      		sbis 38-32,4
+ 404 0198 00C0      		rjmp .L32
+ 405               	.LM75:
+ 406 019a 349A      		sbi 38-32,4
+ 407               	.LM76:
+ 408 019c 34B1      		in r19,36-32
+ 409 019e 25B1      		in r18,37-32
+ 410 01a0 922F      		mov r25,r18
+ 411 01a2 80E0      		ldi r24,lo8(0)
+ 412 01a4 830F      		add r24,r19
+ 413 01a6 911D      		adc r25,__zero_reg__
+ 414 01a8 9383      		std Z+3,r25
+ 415 01aa 8283      		std Z+2,r24
+ 416               	/* epilogue start */
+ 417               	.LM77:
+ 418 01ac 0895      		ret
+ 419               	.LFE10:
+ 420               		.size	OdometrieData, .-OdometrieData
+ 421               	.global	SerWrite
+ 422               		.type	SerWrite, @function
+ 423               	SerWrite:
+ 424               	.LFB11:
+ 425               	.LM78:
+ 426               	.LVL15:
+ 427               	/* prologue: function */
+ 428               	/* frame size = 0 */
+ 429               	.LM79:
+ 430 01ae 28E0      		ldi r18,lo8(8)
+ 431 01b0 2AB9      		out 42-32,r18
+ 432 01b2 FC01      		movw r30,r24
+ 433               	.LVL16:
+ 434 01b4 00C0      		rjmp .L37
+ 435               	.L42:
+ 436               	.LM80:
+ 437 01b6 5D9B      		sbis 43-32,5
+ 438 01b8 00C0      		rjmp .L42
+ 439               	.LM81:
+ 440 01ba 8191      		ld r24,Z+
+ 441 01bc 8CB9      		out 44-32,r24
+ 442               	.LM82:
+ 443 01be 6150      		subi r22,lo8(-(-1))
+ 444               	.LVL17:
+ 445               	.L37:
+ 446               	.LM83:
+ 447 01c0 6623      		tst r22
+ 448 01c2 01F4      		brne .L42
+ 449               	.L41:
+ 450               	.LM84:
+ 451 01c4 5E9B      		sbis 43-32,6
+ 452 01c6 00C0      		rjmp .L41
+ 453               	/* epilogue start */
+ 454               	.LM85:
+ 455 01c8 0895      		ret
+ 456               	.LFE11:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 9
+
+
+ 457               		.size	SerWrite, .-SerWrite
+ 458               	.global	SerRead
+ 459               		.type	SerRead, @function
+ 460               	SerRead:
+ 461               	.LFB12:
+ 462               	.LM86:
+ 463               	.LVL18:
+ 464               	/* prologue: function */
+ 465               	/* frame size = 0 */
+ 466 01ca FC01      		movw r30,r24
+ 467               	.LM87:
+ 468 01cc 80E1      		ldi r24,lo8(16)
+ 469               	.LVL19:
+ 470 01ce 8AB9      		out 42-32,r24
+ 471               	.LM88:
+ 472 01d0 4115      		cp r20,__zero_reg__
+ 473 01d2 5105      		cpc r21,__zero_reg__
+ 474 01d4 01F4      		brne .L46
+ 475 01d6 90E0      		ldi r25,lo8(0)
+ 476               	.LVL20:
+ 477 01d8 00C0      		rjmp .L47
+ 478               	.LVL21:
+ 479               	.L46:
+ 480 01da DF01      		movw r26,r30
+ 481 01dc 70E0      		ldi r23,lo8(0)
+ 482               	.LVL22:
+ 483 01de 00C0      		rjmp .L48
+ 484               	.LVL23:
+ 485               	.L51:
+ 486               	.LM89:
+ 487 01e0 5F9B      		sbis 43-32,7
+ 488 01e2 00C0      		rjmp .L49
+ 489               	.LM90:
+ 490 01e4 8CB1      		in r24,44-32
+ 491 01e6 8D93      		st X+,r24
+ 492 01e8 7F5F      		subi r23,lo8(-(1))
+ 493               	.L48:
+ 494               	.LM91:
+ 495 01ea 7617      		cp r23,r22
+ 496 01ec 00F4      		brsh .L53
+ 497 01ee 20E0      		ldi r18,lo8(0)
+ 498 01f0 30E0      		ldi r19,hi8(0)
+ 499               	.L49:
+ 500 01f2 2F5F      		subi r18,lo8(-(1))
+ 501 01f4 3F4F      		sbci r19,hi8(-(1))
+ 502 01f6 C901      		movw r24,r18
+ 503 01f8 0197      		sbiw r24,1
+ 504 01fa 8417      		cp r24,r20
+ 505 01fc 9507      		cpc r25,r21
+ 506 01fe 00F0      		brlo .L51
+ 507               	.LM92:
+ 508 0200 4217      		cp r20,r18
+ 509 0202 5307      		cpc r21,r19
+ 510 0204 00F4      		brsh .L53
+ 511 0206 84E5      		ldi r24,lo8(84)
+ 512 0208 8083      		st Z,r24
+ 513 020a 0895      		ret
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 10
+
+
+ 514               	.LVL24:
+ 515               	.L54:
+ 516               	.LM93:
+ 517 020c 5F9B      		sbis 43-32,7
+ 518 020e 00C0      		rjmp .L54
+ 519               	.LM94:
+ 520 0210 8CB1      		in r24,44-32
+ 521 0212 8193      		st Z+,r24
+ 522               	.LVL25:
+ 523 0214 9F5F      		subi r25,lo8(-(1))
+ 524               	.LVL26:
+ 525               	.L47:
+ 526               	.LM95:
+ 527 0216 9617      		cp r25,r22
+ 528 0218 00F0      		brlo .L54
+ 529               	.LVL27:
+ 530               	.L53:
+ 531 021a 0895      		ret
+ 532               	.LFE12:
+ 533               		.size	SerRead, .-SerRead
+ 534               	.global	PollSwitch
+ 535               		.type	PollSwitch, @function
+ 536               	PollSwitch:
+ 537               	.LFB13:
+ 538               	.LM96:
+ 539               	/* prologue: function */
+ 540               	/* frame size = 0 */
+ 541               	.LM97:
+ 542 021c 8B9A      		sbi 49-32,3
+ 543               	.LM98:
+ 544 021e 939A      		sbi 50-32,3
+ 545               	.LM99:
+ 546 0220 84E4      		ldi r24,lo8(68)
+ 547 0222 87B9      		out 39-32,r24
+ 548               	.LBB18:
+ 549               	.LBB19:
+ 550               	.LM100:
+ 551 0224 1092 0000 		sts count72kHz,__zero_reg__
+ 552               	.L58:
+ 553               	.LM101:
+ 554 0228 8091 0000 		lds r24,count72kHz
+ 555 022c 8A30      		cpi r24,lo8(10)
+ 556 022e 00F0      		brlo .L58
+ 557               	.LBE19:
+ 558               	.LBE18:
+ 559               	.LM102:
+ 560 0230 369A      		sbi 38-32,6
+ 561               	.L59:
+ 562               	.LM103:
+ 563 0232 349B      		sbis 38-32,4
+ 564 0234 00C0      		rjmp .L59
+ 565               	.LM104:
+ 566 0236 349A      		sbi 38-32,4
+ 567               	.LM105:
+ 568 0238 34B1      		in r19,36-32
+ 569 023a 25B1      		in r18,37-32
+ 570               	.LM106:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 11
+
+
+ 571 023c 9398      		cbi 50-32,3
+ 572 023e 722F      		mov r23,r18
+ 573 0240 60E0      		ldi r22,lo8(0)
+ 574 0242 630F      		add r22,r19
+ 575 0244 711D      		adc r23,__zero_reg__
+ 576 0246 80E0      		ldi r24,lo8(0)
+ 577 0248 90E0      		ldi r25,hi8(0)
+ 578 024a 00D0      		rcall __floatunsisf
+ 579 024c 9B01      		movw r18,r22
+ 580 024e AC01      		movw r20,r24
+ 581 0250 60E0      		ldi r22,lo8(0x44800000)
+ 582 0252 70E0      		ldi r23,hi8(0x44800000)
+ 583 0254 80E8      		ldi r24,hlo8(0x44800000)
+ 584 0256 94E4      		ldi r25,hhi8(0x44800000)
+ 585 0258 00D0      		rcall __divsf3
+ 586 025a 20E0      		ldi r18,lo8(0x3f800000)
+ 587 025c 30E0      		ldi r19,hi8(0x3f800000)
+ 588 025e 40E8      		ldi r20,hlo8(0x3f800000)
+ 589 0260 5FE3      		ldi r21,hhi8(0x3f800000)
+ 590 0262 00D0      		rcall __subsf3
+ 591 0264 20E0      		ldi r18,lo8(0x427c0000)
+ 592 0266 30E0      		ldi r19,hi8(0x427c0000)
+ 593 0268 4CE7      		ldi r20,hlo8(0x427c0000)
+ 594 026a 52E4      		ldi r21,hhi8(0x427c0000)
+ 595 026c 00D0      		rcall __mulsf3
+ 596 026e 20E0      		ldi r18,lo8(0x3f000000)
+ 597 0270 30E0      		ldi r19,hi8(0x3f000000)
+ 598 0272 40E0      		ldi r20,hlo8(0x3f000000)
+ 599 0274 5FE3      		ldi r21,hhi8(0x3f000000)
+ 600 0276 00D0      		rcall __addsf3
+ 601 0278 00D0      		rcall __fixunssfsi
+ 602 027a DC01      		movw r26,r24
+ 603 027c CB01      		movw r24,r22
+ 604               	/* epilogue start */
+ 605               	.LM107:
+ 606 027e 0895      		ret
+ 607               	.LFE13:
+ 608               		.size	PollSwitch, .-PollSwitch
+ 609               	.global	StartSwitch
+ 610               		.type	StartSwitch, @function
+ 611               	StartSwitch:
+ 612               	.LFB14:
+ 613               	.LM108:
+ 614               	/* prologue: function */
+ 615               	/* frame size = 0 */
+ 616               	.LM109:
+ 617 0280 9398      		cbi 50-32,3
+ 618               	.LM110:
+ 619 0282 8B98      		cbi 49-32,3
+ 620               	.LM111:
+ 621 0284 85B7      		in r24,85-32
+ 622 0286 837F      		andi r24,lo8(-13)
+ 623 0288 85BF      		out 85-32,r24
+ 624               	.LM112:
+ 625 028a 8BB7      		in r24,91-32
+ 626 028c 8068      		ori r24,lo8(-128)
+ 627 028e 8BBF      		out 91-32,r24
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 12
+
+
+ 628               	/* epilogue start */
+ 629               	.LM113:
+ 630 0290 0895      		ret
+ 631               	.LFE14:
+ 632               		.size	StartSwitch, .-StartSwitch
+ 633               	.global	StopSwitch
+ 634               		.type	StopSwitch, @function
+ 635               	StopSwitch:
+ 636               	.LFB15:
+ 637               	.LM114:
+ 638               	/* prologue: function */
+ 639               	/* frame size = 0 */
+ 640               	.LM115:
+ 641 0292 8BB7      		in r24,91-32
+ 642 0294 8F77      		andi r24,lo8(127)
+ 643 0296 8BBF      		out 91-32,r24
+ 644               	/* epilogue start */
+ 645               	.LM116:
+ 646 0298 0895      		ret
+ 647               	.LFE15:
+ 648               		.size	StopSwitch, .-StopSwitch
+ 649               	.global	Sleep
+ 650               		.type	Sleep, @function
+ 651               	Sleep:
+ 652               	.LFB16:
+ 653               	.LM117:
+ 654               	.LVL28:
+ 655               	/* prologue: function */
+ 656               	/* frame size = 0 */
+ 657 029a 982F      		mov r25,r24
+ 658               	.LM118:
+ 659 029c 1092 0000 		sts count72kHz,__zero_reg__
+ 660               	.LVL29:
+ 661               	.L68:
+ 662               	.LM119:
+ 663 02a0 8091 0000 		lds r24,count72kHz
+ 664 02a4 8917      		cp r24,r25
+ 665 02a6 00F0      		brlo .L68
+ 666               	/* epilogue start */
+ 667               	.LM120:
+ 668 02a8 0895      		ret
+ 669               	.LFE16:
+ 670               		.size	Sleep, .-Sleep
+ 671               	.global	Msleep
+ 672               		.type	Msleep, @function
+ 673               	Msleep:
+ 674               	.LFB17:
+ 675               	.LM121:
+ 676               	.LVL30:
+ 677               	/* prologue: function */
+ 678               	/* frame size = 0 */
+ 679 02aa AC01      		movw r20,r24
+ 680               	.LM122:
+ 681 02ac 20E0      		ldi r18,lo8(0)
+ 682 02ae 30E0      		ldi r19,hi8(0)
+ 683               	.LVL31:
+ 684 02b0 00C0      		rjmp .L72
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 13
+
+
+ 685               	.LVL32:
+ 686               	.L74:
+ 687               	.LBB20:
+ 688               	.LBB21:
+ 689               	.LM123:
+ 690 02b2 1092 0000 		sts count72kHz,__zero_reg__
+ 691               	.L73:
+ 692               	.LM124:
+ 693 02b6 8091 0000 		lds r24,count72kHz
+ 694 02ba 8834      		cpi r24,lo8(72)
+ 695 02bc 00F0      		brlo .L73
+ 696               	.LBE21:
+ 697               	.LBE20:
+ 698               	.LM125:
+ 699 02be 2F5F      		subi r18,lo8(-(1))
+ 700 02c0 3F4F      		sbci r19,hi8(-(1))
+ 701               	.LVL33:
+ 702               	.L72:
+ 703 02c2 2417      		cp r18,r20
+ 704 02c4 3507      		cpc r19,r21
+ 705 02c6 00F0      		brlo .L74
+ 706               	/* epilogue start */
+ 707               	.LM126:
+ 708 02c8 0895      		ret
+ 709               	.LFE17:
+ 710               		.size	Msleep, .-Msleep
+ 711               	.global	GetTime
+ 712               		.type	GetTime, @function
+ 713               	GetTime:
+ 714               	.LFB18:
+ 715               	.LM127:
+ 716               	/* prologue: function */
+ 717               	/* frame size = 0 */
+ 718               	.LM128:
+ 719 02ca 6091 0000 		lds r22,timebase
+ 720 02ce 7091 0000 		lds r23,(timebase)+1
+ 721 02d2 8091 0000 		lds r24,(timebase)+2
+ 722 02d6 9091 0000 		lds r25,(timebase)+3
+ 723 02da 2091 0000 		lds r18,count72kHz
+ 724 02de 982F      		mov r25,r24
+ 725 02e0 872F      		mov r24,r23
+ 726 02e2 762F      		mov r23,r22
+ 727 02e4 6627      		clr r22
+ 728 02e6 620F      		add r22,r18
+ 729 02e8 711D      		adc r23,__zero_reg__
+ 730 02ea 811D      		adc r24,__zero_reg__
+ 731 02ec 911D      		adc r25,__zero_reg__
+ 732 02ee 28E4      		ldi r18,lo8(72)
+ 733 02f0 30E0      		ldi r19,hi8(72)
+ 734 02f2 40E0      		ldi r20,hlo8(72)
+ 735 02f4 50E0      		ldi r21,hhi8(72)
+ 736 02f6 00D0      		rcall __udivmodsi4
+ 737 02f8 CA01      		movw r24,r20
+ 738               	.LM129:
+ 739 02fa B901      		movw r22,r18
+ 740               	/* epilogue start */
+ 741 02fc 0895      		ret
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 14
+
+
+ 742               	.LFE18:
+ 743               		.size	GetTime, .-GetTime
+ 744               		.comm count72kHz,1,1
+ 745               		.comm timebase,4,1
+ 746               		.section	.debug_frame,"",@progbits
+ 747               	.Lframe0:
+ 748 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 749               	.LSCIE0:
+ 750 0004 FFFF FFFF 		.long	0xffffffff
+ 751 0008 01        		.byte	0x1
+ 752 0009 00        		.string	""
+ 753 000a 01        		.uleb128 0x1
+ 754 000b 7F        		.sleb128 -1
+ 755 000c 24        		.byte	0x24
+ 756 000d 0C        		.byte	0xc
+ 757 000e 20        		.uleb128 0x20
+ 758 000f 00        		.uleb128 0x0
+ 759               		.p2align	2
+ 760               	.LECIE0:
+ 761               	.LSFDE0:
+ 762 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 763               	.LASFDE0:
+ 764 0014 0000 0000 		.long	.Lframe0
+ 765 0018 0000 0000 		.long	.LFB2
+ 766 001c 5400 0000 		.long	.LFE2-.LFB2
+ 767               		.p2align	2
+ 768               	.LEFDE0:
+ 769               	.LSFDE2:
+ 770 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 771               	.LASFDE2:
+ 772 0024 0000 0000 		.long	.Lframe0
+ 773 0028 0000 0000 		.long	.LFB4
+ 774 002c 0E00 0000 		.long	.LFE4-.LFB4
+ 775               		.p2align	2
+ 776               	.LEFDE2:
+ 777               	.LSFDE4:
+ 778 0030 0C00 0000 		.long	.LEFDE4-.LASFDE4
+ 779               	.LASFDE4:
+ 780 0034 0000 0000 		.long	.Lframe0
+ 781 0038 0000 0000 		.long	.LFB5
+ 782 003c 1200 0000 		.long	.LFE5-.LFB5
+ 783               		.p2align	2
+ 784               	.LEFDE4:
+ 785               	.LSFDE6:
+ 786 0040 0C00 0000 		.long	.LEFDE6-.LASFDE6
+ 787               	.LASFDE6:
+ 788 0044 0000 0000 		.long	.Lframe0
+ 789 0048 0000 0000 		.long	.LFB6
+ 790 004c 2600 0000 		.long	.LFE6-.LFB6
+ 791               		.p2align	2
+ 792               	.LEFDE6:
+ 793               	.LSFDE8:
+ 794 0050 0C00 0000 		.long	.LEFDE8-.LASFDE8
+ 795               	.LASFDE8:
+ 796 0054 0000 0000 		.long	.Lframe0
+ 797 0058 0000 0000 		.long	.LFB7
+ 798 005c 1200 0000 		.long	.LFE7-.LFB7
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 15
+
+
+ 799               		.p2align	2
+ 800               	.LEFDE8:
+ 801               	.LSFDE10:
+ 802 0060 0C00 0000 		.long	.LEFDE10-.LASFDE10
+ 803               	.LASFDE10:
+ 804 0064 0000 0000 		.long	.Lframe0
+ 805 0068 0000 0000 		.long	.LFB8
+ 806 006c 2600 0000 		.long	.LFE8-.LFB8
+ 807               		.p2align	2
+ 808               	.LEFDE10:
+ 809               	.LSFDE12:
+ 810 0070 0C00 0000 		.long	.LEFDE12-.LASFDE12
+ 811               	.LASFDE12:
+ 812 0074 0000 0000 		.long	.Lframe0
+ 813 0078 0000 0000 		.long	.LFB3
+ 814 007c 5C00 0000 		.long	.LFE3-.LFB3
+ 815               		.p2align	2
+ 816               	.LEFDE12:
+ 817               	.LSFDE14:
+ 818 0080 0C00 0000 		.long	.LEFDE14-.LASFDE14
+ 819               	.LASFDE14:
+ 820 0084 0000 0000 		.long	.Lframe0
+ 821 0088 0000 0000 		.long	.LFB9
+ 822 008c 3C00 0000 		.long	.LFE9-.LFB9
+ 823               		.p2align	2
+ 824               	.LEFDE14:
+ 825               	.LSFDE16:
+ 826 0090 0C00 0000 		.long	.LEFDE16-.LASFDE16
+ 827               	.LASFDE16:
+ 828 0094 0000 0000 		.long	.Lframe0
+ 829 0098 0000 0000 		.long	.LFB10
+ 830 009c 4400 0000 		.long	.LFE10-.LFB10
+ 831               		.p2align	2
+ 832               	.LEFDE16:
+ 833               	.LSFDE18:
+ 834 00a0 0C00 0000 		.long	.LEFDE18-.LASFDE18
+ 835               	.LASFDE18:
+ 836 00a4 0000 0000 		.long	.Lframe0
+ 837 00a8 0000 0000 		.long	.LFB11
+ 838 00ac 1C00 0000 		.long	.LFE11-.LFB11
+ 839               		.p2align	2
+ 840               	.LEFDE18:
+ 841               	.LSFDE20:
+ 842 00b0 0C00 0000 		.long	.LEFDE20-.LASFDE20
+ 843               	.LASFDE20:
+ 844 00b4 0000 0000 		.long	.Lframe0
+ 845 00b8 0000 0000 		.long	.LFB12
+ 846 00bc 5200 0000 		.long	.LFE12-.LFB12
+ 847               		.p2align	2
+ 848               	.LEFDE20:
+ 849               	.LSFDE22:
+ 850 00c0 0C00 0000 		.long	.LEFDE22-.LASFDE22
+ 851               	.LASFDE22:
+ 852 00c4 0000 0000 		.long	.Lframe0
+ 853 00c8 0000 0000 		.long	.LFB13
+ 854 00cc 6400 0000 		.long	.LFE13-.LFB13
+ 855               		.p2align	2
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 16
+
+
+ 856               	.LEFDE22:
+ 857               	.LSFDE24:
+ 858 00d0 0C00 0000 		.long	.LEFDE24-.LASFDE24
+ 859               	.LASFDE24:
+ 860 00d4 0000 0000 		.long	.Lframe0
+ 861 00d8 0000 0000 		.long	.LFB14
+ 862 00dc 1200 0000 		.long	.LFE14-.LFB14
+ 863               		.p2align	2
+ 864               	.LEFDE24:
+ 865               	.LSFDE26:
+ 866 00e0 0C00 0000 		.long	.LEFDE26-.LASFDE26
+ 867               	.LASFDE26:
+ 868 00e4 0000 0000 		.long	.Lframe0
+ 869 00e8 0000 0000 		.long	.LFB15
+ 870 00ec 0800 0000 		.long	.LFE15-.LFB15
+ 871               		.p2align	2
+ 872               	.LEFDE26:
+ 873               	.LSFDE28:
+ 874 00f0 0C00 0000 		.long	.LEFDE28-.LASFDE28
+ 875               	.LASFDE28:
+ 876 00f4 0000 0000 		.long	.Lframe0
+ 877 00f8 0000 0000 		.long	.LFB16
+ 878 00fc 1000 0000 		.long	.LFE16-.LFB16
+ 879               		.p2align	2
+ 880               	.LEFDE28:
+ 881               	.LSFDE30:
+ 882 0100 0C00 0000 		.long	.LEFDE30-.LASFDE30
+ 883               	.LASFDE30:
+ 884 0104 0000 0000 		.long	.Lframe0
+ 885 0108 0000 0000 		.long	.LFB17
+ 886 010c 2000 0000 		.long	.LFE17-.LFB17
+ 887               		.p2align	2
+ 888               	.LEFDE30:
+ 889               	.LSFDE32:
+ 890 0110 0C00 0000 		.long	.LEFDE32-.LASFDE32
+ 891               	.LASFDE32:
+ 892 0114 0000 0000 		.long	.Lframe0
+ 893 0118 0000 0000 		.long	.LFB18
+ 894 011c 3400 0000 		.long	.LFE18-.LFB18
+ 895               		.p2align	2
+ 896               	.LEFDE32:
+ 897               		.text
+ 898               	.Letext0:
+ 899               		.section	.debug_loc,"",@progbits
+ 900               	.Ldebug_loc0:
+ 901               	.LLST2:
+ 902 0000 5400 0000 		.long	.LVL0-.Ltext0
+ 903 0004 5A00 0000 		.long	.LVL1-.Ltext0
+ 904 0008 0100      		.word	0x1
+ 905 000a 68        		.byte	0x68
+ 906 000b 0000 0000 		.long	0x0
+ 907 000f 0000 0000 		.long	0x0
+ 908               	.LLST3:
+ 909 0013 5400 0000 		.long	.LVL0-.Ltext0
+ 910 0017 6000 0000 		.long	.LVL2-.Ltext0
+ 911 001b 0100      		.word	0x1
+ 912 001d 66        		.byte	0x66
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 17
+
+
+ 913 001e 0000 0000 		.long	0x0
+ 914 0022 0000 0000 		.long	0x0
+ 915               	.LLST5:
+ 916 0026 6200 0000 		.long	.LVL3-.Ltext0
+ 917 002a 6C00 0000 		.long	.LVL4-.Ltext0
+ 918 002e 0100      		.word	0x1
+ 919 0030 68        		.byte	0x68
+ 920 0031 0000 0000 		.long	0x0
+ 921 0035 0000 0000 		.long	0x0
+ 922               	.LLST8:
+ 923 0039 9A00 0000 		.long	.LVL6-.Ltext0
+ 924 003d 9E00 0000 		.long	.LVL7-.Ltext0
+ 925 0041 0100      		.word	0x1
+ 926 0043 68        		.byte	0x68
+ 927 0044 0000 0000 		.long	0x0
+ 928 0048 0000 0000 		.long	0x0
+ 929               	.LLST10:
+ 930 004c AC00 0000 		.long	.LVL8-.Ltext0
+ 931 0050 BA00 0000 		.long	.LVL9-.Ltext0
+ 932 0054 0100      		.word	0x1
+ 933 0056 68        		.byte	0x68
+ 934 0057 BA00 0000 		.long	.LVL9-.Ltext0
+ 935 005b D200 0000 		.long	.LFE8-.Ltext0
+ 936 005f 0100      		.word	0x1
+ 937 0061 69        		.byte	0x69
+ 938 0062 0000 0000 		.long	0x0
+ 939 0066 0000 0000 		.long	0x0
+ 940               	.LLST13:
+ 941 006a 2E01 0000 		.long	.LVL11-.Ltext0
+ 942 006e 3201 0000 		.long	.LVL12-.Ltext0
+ 943 0072 0600      		.word	0x6
+ 944 0074 68        		.byte	0x68
+ 945 0075 93        		.byte	0x93
+ 946 0076 01        		.uleb128 0x1
+ 947 0077 69        		.byte	0x69
+ 948 0078 93        		.byte	0x93
+ 949 0079 01        		.uleb128 0x1
+ 950 007a 3201 0000 		.long	.LVL12-.Ltext0
+ 951 007e 6A01 0000 		.long	.LFE9-.Ltext0
+ 952 0082 0600      		.word	0x6
+ 953 0084 6E        		.byte	0x6e
+ 954 0085 93        		.byte	0x93
+ 955 0086 01        		.uleb128 0x1
+ 956 0087 6F        		.byte	0x6f
+ 957 0088 93        		.byte	0x93
+ 958 0089 01        		.uleb128 0x1
+ 959 008a 0000 0000 		.long	0x0
+ 960 008e 0000 0000 		.long	0x0
+ 961               	.LLST15:
+ 962 0092 6A01 0000 		.long	.LVL13-.Ltext0
+ 963 0096 6E01 0000 		.long	.LVL14-.Ltext0
+ 964 009a 0600      		.word	0x6
+ 965 009c 68        		.byte	0x68
+ 966 009d 93        		.byte	0x93
+ 967 009e 01        		.uleb128 0x1
+ 968 009f 69        		.byte	0x69
+ 969 00a0 93        		.byte	0x93
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 18
+
+
+ 970 00a1 01        		.uleb128 0x1
+ 971 00a2 6E01 0000 		.long	.LVL14-.Ltext0
+ 972 00a6 AE01 0000 		.long	.LFE10-.Ltext0
+ 973 00aa 0600      		.word	0x6
+ 974 00ac 6E        		.byte	0x6e
+ 975 00ad 93        		.byte	0x93
+ 976 00ae 01        		.uleb128 0x1
+ 977 00af 6F        		.byte	0x6f
+ 978 00b0 93        		.byte	0x93
+ 979 00b1 01        		.uleb128 0x1
+ 980 00b2 0000 0000 		.long	0x0
+ 981 00b6 0000 0000 		.long	0x0
+ 982               	.LLST17:
+ 983 00ba AE01 0000 		.long	.LVL15-.Ltext0
+ 984 00be B401 0000 		.long	.LVL16-.Ltext0
+ 985 00c2 0600      		.word	0x6
+ 986 00c4 68        		.byte	0x68
+ 987 00c5 93        		.byte	0x93
+ 988 00c6 01        		.uleb128 0x1
+ 989 00c7 69        		.byte	0x69
+ 990 00c8 93        		.byte	0x93
+ 991 00c9 01        		.uleb128 0x1
+ 992 00ca 0000 0000 		.long	0x0
+ 993 00ce 0000 0000 		.long	0x0
+ 994               	.LLST19:
+ 995 00d2 CA01 0000 		.long	.LVL18-.Ltext0
+ 996 00d6 CE01 0000 		.long	.LVL19-.Ltext0
+ 997 00da 0600      		.word	0x6
+ 998 00dc 68        		.byte	0x68
+ 999 00dd 93        		.byte	0x93
+ 1000 00de 01        		.uleb128 0x1
+ 1001 00df 69        		.byte	0x69
+ 1002 00e0 93        		.byte	0x93
+ 1003 00e1 01        		.uleb128 0x1
+ 1004 00e2 CE01 0000 		.long	.LVL19-.Ltext0
+ 1005 00e6 1402 0000 		.long	.LVL25-.Ltext0
+ 1006 00ea 0600      		.word	0x6
+ 1007 00ec 6E        		.byte	0x6e
+ 1008 00ed 93        		.byte	0x93
+ 1009 00ee 01        		.uleb128 0x1
+ 1010 00ef 6F        		.byte	0x6f
+ 1011 00f0 93        		.byte	0x93
+ 1012 00f1 01        		.uleb128 0x1
+ 1013 00f2 1602 0000 		.long	.LVL26-.Ltext0
+ 1014 00f6 1C02 0000 		.long	.LFE12-.Ltext0
+ 1015 00fa 0600      		.word	0x6
+ 1016 00fc 6E        		.byte	0x6e
+ 1017 00fd 93        		.byte	0x93
+ 1018 00fe 01        		.uleb128 0x1
+ 1019 00ff 6F        		.byte	0x6f
+ 1020 0100 93        		.byte	0x93
+ 1021 0101 01        		.uleb128 0x1
+ 1022 0102 0000 0000 		.long	0x0
+ 1023 0106 0000 0000 		.long	0x0
+ 1024               	.LLST20:
+ 1025 010a D801 0000 		.long	.LVL20-.Ltext0
+ 1026 010e DA01 0000 		.long	.LVL21-.Ltext0
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 19
+
+
+ 1027 0112 0100      		.word	0x1
+ 1028 0114 69        		.byte	0x69
+ 1029 0115 DE01 0000 		.long	.LVL22-.Ltext0
+ 1030 0119 0C02 0000 		.long	.LVL24-.Ltext0
+ 1031 011d 0100      		.word	0x1
+ 1032 011f 67        		.byte	0x67
+ 1033 0120 0C02 0000 		.long	.LVL24-.Ltext0
+ 1034 0124 1A02 0000 		.long	.LVL27-.Ltext0
+ 1035 0128 0100      		.word	0x1
+ 1036 012a 69        		.byte	0x69
+ 1037 012b 1A02 0000 		.long	.LVL27-.Ltext0
+ 1038 012f 1C02 0000 		.long	.LFE12-.Ltext0
+ 1039 0133 0100      		.word	0x1
+ 1040 0135 67        		.byte	0x67
+ 1041 0136 0000 0000 		.long	0x0
+ 1042 013a 0000 0000 		.long	0x0
+ 1043               	.LLST21:
+ 1044 013e E001 0000 		.long	.LVL23-.Ltext0
+ 1045 0142 0C02 0000 		.long	.LVL24-.Ltext0
+ 1046 0146 0600      		.word	0x6
+ 1047 0148 62        		.byte	0x62
+ 1048 0149 93        		.byte	0x93
+ 1049 014a 01        		.uleb128 0x1
+ 1050 014b 63        		.byte	0x63
+ 1051 014c 93        		.byte	0x93
+ 1052 014d 01        		.uleb128 0x1
+ 1053 014e 1A02 0000 		.long	.LVL27-.Ltext0
+ 1054 0152 1C02 0000 		.long	.LFE12-.Ltext0
+ 1055 0156 0600      		.word	0x6
+ 1056 0158 62        		.byte	0x62
+ 1057 0159 93        		.byte	0x93
+ 1058 015a 01        		.uleb128 0x1
+ 1059 015b 63        		.byte	0x63
+ 1060 015c 93        		.byte	0x93
+ 1061 015d 01        		.uleb128 0x1
+ 1062 015e 0000 0000 		.long	0x0
+ 1063 0162 0000 0000 		.long	0x0
+ 1064               	.LLST26:
+ 1065 0166 9A02 0000 		.long	.LVL28-.Ltext0
+ 1066 016a A002 0000 		.long	.LVL29-.Ltext0
+ 1067 016e 0100      		.word	0x1
+ 1068 0170 68        		.byte	0x68
+ 1069 0171 A002 0000 		.long	.LVL29-.Ltext0
+ 1070 0175 AA02 0000 		.long	.LFE16-.Ltext0
+ 1071 0179 0100      		.word	0x1
+ 1072 017b 69        		.byte	0x69
+ 1073 017c 0000 0000 		.long	0x0
+ 1074 0180 0000 0000 		.long	0x0
+ 1075               	.LLST28:
+ 1076 0184 AA02 0000 		.long	.LVL30-.Ltext0
+ 1077 0188 B202 0000 		.long	.LVL32-.Ltext0
+ 1078 018c 0600      		.word	0x6
+ 1079 018e 68        		.byte	0x68
+ 1080 018f 93        		.byte	0x93
+ 1081 0190 01        		.uleb128 0x1
+ 1082 0191 69        		.byte	0x69
+ 1083 0192 93        		.byte	0x93
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 20
+
+
+ 1084 0193 01        		.uleb128 0x1
+ 1085 0194 B202 0000 		.long	.LVL32-.Ltext0
+ 1086 0198 CA02 0000 		.long	.LFE17-.Ltext0
+ 1087 019c 0600      		.word	0x6
+ 1088 019e 64        		.byte	0x64
+ 1089 019f 93        		.byte	0x93
+ 1090 01a0 01        		.uleb128 0x1
+ 1091 01a1 65        		.byte	0x65
+ 1092 01a2 93        		.byte	0x93
+ 1093 01a3 01        		.uleb128 0x1
+ 1094 01a4 0000 0000 		.long	0x0
+ 1095 01a8 0000 0000 		.long	0x0
+ 1096               		.section	.debug_info
+ 1097 0000 2104 0000 		.long	0x421
+ 1098 0004 0200      		.word	0x2
+ 1099 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 1100 000a 04        		.byte	0x4
+ 1101 000b 01        		.uleb128 0x1
+ 1102 000c 0000 0000 		.long	.LASF38
+ 1103 0010 01        		.byte	0x1
+ 1104 0011 0000 0000 		.long	.LASF39
+ 1105 0015 0000 0000 		.long	.LASF40
+ 1106 0019 0000 0000 		.long	.Ltext0
+ 1107 001d 0000 0000 		.long	.Letext0
+ 1108 0021 0000 0000 		.long	.Ldebug_line0
+ 1109 0025 02        		.uleb128 0x2
+ 1110 0026 01        		.byte	0x1
+ 1111 0027 06        		.byte	0x6
+ 1112 0028 0000 0000 		.long	.LASF0
+ 1113 002c 02        		.uleb128 0x2
+ 1114 002d 01        		.byte	0x1
+ 1115 002e 08        		.byte	0x8
+ 1116 002f 0000 0000 		.long	.LASF1
+ 1117 0033 03        		.uleb128 0x3
+ 1118 0034 02        		.byte	0x2
+ 1119 0035 05        		.byte	0x5
+ 1120 0036 696E 7400 		.string	"int"
+ 1121 003a 02        		.uleb128 0x2
+ 1122 003b 02        		.byte	0x2
+ 1123 003c 07        		.byte	0x7
+ 1124 003d 0000 0000 		.long	.LASF2
+ 1125 0041 02        		.uleb128 0x2
+ 1126 0042 04        		.byte	0x4
+ 1127 0043 05        		.byte	0x5
+ 1128 0044 0000 0000 		.long	.LASF3
+ 1129 0048 02        		.uleb128 0x2
+ 1130 0049 04        		.byte	0x4
+ 1131 004a 07        		.byte	0x7
+ 1132 004b 0000 0000 		.long	.LASF4
+ 1133 004f 02        		.uleb128 0x2
+ 1134 0050 08        		.byte	0x8
+ 1135 0051 05        		.byte	0x5
+ 1136 0052 0000 0000 		.long	.LASF5
+ 1137 0056 02        		.uleb128 0x2
+ 1138 0057 08        		.byte	0x8
+ 1139 0058 07        		.byte	0x7
+ 1140 0059 0000 0000 		.long	.LASF6
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 21
+
+
+ 1141 005d 04        		.uleb128 0x4
+ 1142 005e 01        		.byte	0x1
+ 1143 005f 0000 0000 		.long	.LASF7
+ 1144 0063 01        		.byte	0x1
+ 1145 0064 6D        		.byte	0x6d
+ 1146 0065 01        		.byte	0x1
+ 1147 0066 03        		.byte	0x3
+ 1148 0067 7700 0000 		.long	0x77
+ 1149 006b 05        		.uleb128 0x5
+ 1150 006c 0000 0000 		.long	.LASF9
+ 1151 0070 01        		.byte	0x1
+ 1152 0071 6C        		.byte	0x6c
+ 1153 0072 2C00 0000 		.long	0x2c
+ 1154 0076 00        		.byte	0x0
+ 1155 0077 04        		.uleb128 0x4
+ 1156 0078 01        		.byte	0x1
+ 1157 0079 0000 0000 		.long	.LASF8
+ 1158 007d 01        		.byte	0x1
+ 1159 007e 59        		.byte	0x59
+ 1160 007f 01        		.byte	0x1
+ 1161 0080 03        		.byte	0x3
+ 1162 0081 9C00 0000 		.long	0x9c
+ 1163 0085 05        		.uleb128 0x5
+ 1164 0086 0000 0000 		.long	.LASF10
+ 1165 008a 01        		.byte	0x1
+ 1166 008b 58        		.byte	0x58
+ 1167 008c 2C00 0000 		.long	0x2c
+ 1168 0090 05        		.uleb128 0x5
+ 1169 0091 0000 0000 		.long	.LASF11
+ 1170 0095 01        		.byte	0x1
+ 1171 0096 58        		.byte	0x58
+ 1172 0097 2C00 0000 		.long	0x2c
+ 1173 009b 00        		.byte	0x0
+ 1174 009c 04        		.uleb128 0x4
+ 1175 009d 01        		.byte	0x1
+ 1176 009e 0000 0000 		.long	.LASF12
+ 1177 00a2 01        		.byte	0x1
+ 1178 00a3 52        		.byte	0x52
+ 1179 00a4 01        		.byte	0x1
+ 1180 00a5 03        		.byte	0x3
+ 1181 00a6 C100 0000 		.long	0xc1
+ 1182 00aa 05        		.uleb128 0x5
+ 1183 00ab 0000 0000 		.long	.LASF13
+ 1184 00af 01        		.byte	0x1
+ 1185 00b0 51        		.byte	0x51
+ 1186 00b1 2C00 0000 		.long	0x2c
+ 1187 00b5 05        		.uleb128 0x5
+ 1188 00b6 0000 0000 		.long	.LASF14
+ 1189 00ba 01        		.byte	0x1
+ 1190 00bb 51        		.byte	0x51
+ 1191 00bc 2C00 0000 		.long	0x2c
+ 1192 00c0 00        		.byte	0x0
+ 1193 00c1 04        		.uleb128 0x4
+ 1194 00c2 01        		.byte	0x1
+ 1195 00c3 0000 0000 		.long	.LASF15
+ 1196 00c7 01        		.byte	0x1
+ 1197 00c8 EE        		.byte	0xee
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 22
+
+
+ 1198 00c9 01        		.byte	0x1
+ 1199 00ca 01        		.byte	0x1
+ 1200 00cb DB00 0000 		.long	0xdb
+ 1201 00cf 05        		.uleb128 0x5
+ 1202 00d0 0000 0000 		.long	.LASF16
+ 1203 00d4 01        		.byte	0x1
+ 1204 00d5 ED        		.byte	0xed
+ 1205 00d6 2C00 0000 		.long	0x2c
+ 1206 00da 00        		.byte	0x0
+ 1207 00db 06        		.uleb128 0x6
+ 1208 00dc 01        		.byte	0x1
+ 1209 00dd 0000 0000 		.long	.LASF31
+ 1210 00e1 01        		.byte	0x1
+ 1211 00e2 25        		.byte	0x25
+ 1212 00e3 01        		.byte	0x1
+ 1213 00e4 0000 0000 		.long	.LFB2
+ 1214 00e8 0000 0000 		.long	.LFE2
+ 1215 00ec 02        		.byte	0x2
+ 1216 00ed 90        		.byte	0x90
+ 1217 00ee 20        		.uleb128 0x20
+ 1218 00ef 07        		.uleb128 0x7
+ 1219 00f0 9C00 0000 		.long	0x9c
+ 1220 00f4 0000 0000 		.long	.LFB4
+ 1221 00f8 0000 0000 		.long	.LFE4
+ 1222 00fc 02        		.byte	0x2
+ 1223 00fd 90        		.byte	0x90
+ 1224 00fe 20        		.uleb128 0x20
+ 1225 00ff 1601 0000 		.long	0x116
+ 1226 0103 08        		.uleb128 0x8
+ 1227 0104 AA00 0000 		.long	0xaa
+ 1228 0108 0000 0000 		.long	.LLST2
+ 1229 010c 08        		.uleb128 0x8
+ 1230 010d B500 0000 		.long	0xb5
+ 1231 0111 0000 0000 		.long	.LLST3
+ 1232 0115 00        		.byte	0x0
+ 1233 0116 07        		.uleb128 0x7
+ 1234 0117 7700 0000 		.long	0x77
+ 1235 011b 0000 0000 		.long	.LFB5
+ 1236 011f 0000 0000 		.long	.LFE5
+ 1237 0123 02        		.byte	0x2
+ 1238 0124 90        		.byte	0x90
+ 1239 0125 20        		.uleb128 0x20
+ 1240 0126 3B01 0000 		.long	0x13b
+ 1241 012a 08        		.uleb128 0x8
+ 1242 012b 8500 0000 		.long	0x85
+ 1243 012f 0000 0000 		.long	.LLST5
+ 1244 0133 09        		.uleb128 0x9
+ 1245 0134 9000 0000 		.long	0x90
+ 1246 0138 01        		.byte	0x1
+ 1247 0139 66        		.byte	0x66
+ 1248 013a 00        		.byte	0x0
+ 1249 013b 0A        		.uleb128 0xa
+ 1250 013c 01        		.byte	0x1
+ 1251 013d 0000 0000 		.long	.LASF17
+ 1252 0141 01        		.byte	0x1
+ 1253 0142 62        		.byte	0x62
+ 1254 0143 01        		.byte	0x1
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 23
+
+
+ 1255 0144 0000 0000 		.long	.LFB6
+ 1256 0148 0000 0000 		.long	.LFE6
+ 1257 014c 02        		.byte	0x2
+ 1258 014d 90        		.byte	0x90
+ 1259 014e 20        		.uleb128 0x20
+ 1260 014f 6101 0000 		.long	0x161
+ 1261 0153 0B        		.uleb128 0xb
+ 1262 0154 0000 0000 		.long	.LASF19
+ 1263 0158 01        		.byte	0x1
+ 1264 0159 61        		.byte	0x61
+ 1265 015a 2C00 0000 		.long	0x2c
+ 1266 015e 01        		.byte	0x1
+ 1267 015f 68        		.byte	0x68
+ 1268 0160 00        		.byte	0x0
+ 1269 0161 07        		.uleb128 0x7
+ 1270 0162 5D00 0000 		.long	0x5d
+ 1271 0166 0000 0000 		.long	.LFB7
+ 1272 016a 0000 0000 		.long	.LFE7
+ 1273 016e 02        		.byte	0x2
+ 1274 016f 90        		.byte	0x90
+ 1275 0170 20        		.uleb128 0x20
+ 1276 0171 7F01 0000 		.long	0x17f
+ 1277 0175 08        		.uleb128 0x8
+ 1278 0176 6B00 0000 		.long	0x6b
+ 1279 017a 0000 0000 		.long	.LLST8
+ 1280 017e 00        		.byte	0x0
+ 1281 017f 0A        		.uleb128 0xa
+ 1282 0180 01        		.byte	0x1
+ 1283 0181 0000 0000 		.long	.LASF18
+ 1284 0185 01        		.byte	0x1
+ 1285 0186 75        		.byte	0x75
+ 1286 0187 01        		.byte	0x1
+ 1287 0188 0000 0000 		.long	.LFB8
+ 1288 018c 0000 0000 		.long	.LFE8
+ 1289 0190 02        		.byte	0x2
+ 1290 0191 90        		.byte	0x90
+ 1291 0192 20        		.uleb128 0x20
+ 1292 0193 B401 0000 		.long	0x1b4
+ 1293 0197 0C        		.uleb128 0xc
+ 1294 0198 0000 0000 		.long	.LASF20
+ 1295 019c 01        		.byte	0x1
+ 1296 019d 74        		.byte	0x74
+ 1297 019e 2C00 0000 		.long	0x2c
+ 1298 01a2 0000 0000 		.long	.LLST10
+ 1299 01a6 0B        		.uleb128 0xb
+ 1300 01a7 0000 0000 		.long	.LASF21
+ 1301 01ab 01        		.byte	0x1
+ 1302 01ac 74        		.byte	0x74
+ 1303 01ad 2C00 0000 		.long	0x2c
+ 1304 01b1 01        		.byte	0x1
+ 1305 01b2 66        		.byte	0x66
+ 1306 01b3 00        		.byte	0x0
+ 1307 01b4 0A        		.uleb128 0xa
+ 1308 01b5 01        		.byte	0x1
+ 1309 01b6 0000 0000 		.long	.LASF22
+ 1310 01ba 01        		.byte	0x1
+ 1311 01bb 2C        		.byte	0x2c
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 24
+
+
+ 1312 01bc 01        		.byte	0x1
+ 1313 01bd 0000 0000 		.long	.LFB3
+ 1314 01c1 0000 0000 		.long	.LFE3
+ 1315 01c5 02        		.byte	0x2
+ 1316 01c6 90        		.byte	0x90
+ 1317 01c7 20        		.uleb128 0x20
+ 1318 01c8 1E02 0000 		.long	0x21e
+ 1319 01cc 0D        		.uleb128 0xd
+ 1320 01cd 5D00 0000 		.long	0x5d
+ 1321 01d1 0000 0000 		.long	.LBB12
+ 1322 01d5 0000 0000 		.long	.LBE12
+ 1323 01d9 01        		.byte	0x1
+ 1324 01da 46        		.byte	0x46
+ 1325 01db E501 0000 		.long	0x1e5
+ 1326 01df 0E        		.uleb128 0xe
+ 1327 01e0 7501 0000 		.long	0x175
+ 1328 01e4 00        		.byte	0x0
+ 1329 01e5 0D        		.uleb128 0xd
+ 1330 01e6 7700 0000 		.long	0x77
+ 1331 01ea 0000 0000 		.long	.LBB14
+ 1332 01ee 0000 0000 		.long	.LBE14
+ 1333 01f2 01        		.byte	0x1
+ 1334 01f3 4B        		.byte	0x4b
+ 1335 01f4 0302 0000 		.long	0x203
+ 1336 01f8 0E        		.uleb128 0xe
+ 1337 01f9 3301 0000 		.long	0x133
+ 1338 01fd 0E        		.uleb128 0xe
+ 1339 01fe 2A01 0000 		.long	0x12a
+ 1340 0202 00        		.byte	0x0
+ 1341 0203 0F        		.uleb128 0xf
+ 1342 0204 9C00 0000 		.long	0x9c
+ 1343 0208 0000 0000 		.long	.LBB16
+ 1344 020c 0000 0000 		.long	.LBE16
+ 1345 0210 01        		.byte	0x1
+ 1346 0211 4C        		.byte	0x4c
+ 1347 0212 0E        		.uleb128 0xe
+ 1348 0213 0C01 0000 		.long	0x10c
+ 1349 0217 0E        		.uleb128 0xe
+ 1350 0218 0301 0000 		.long	0x103
+ 1351 021c 00        		.byte	0x0
+ 1352 021d 00        		.byte	0x0
+ 1353 021e 0A        		.uleb128 0xa
+ 1354 021f 01        		.byte	0x1
+ 1355 0220 0000 0000 		.long	.LASF23
+ 1356 0224 01        		.byte	0x1
+ 1357 0225 81        		.byte	0x81
+ 1358 0226 01        		.byte	0x1
+ 1359 0227 0000 0000 		.long	.LFB9
+ 1360 022b 0000 0000 		.long	.LFE9
+ 1361 022f 02        		.byte	0x2
+ 1362 0230 90        		.byte	0x90
+ 1363 0231 20        		.uleb128 0x20
+ 1364 0232 4602 0000 		.long	0x246
+ 1365 0236 0C        		.uleb128 0xc
+ 1366 0237 0000 0000 		.long	.LASF24
+ 1367 023b 01        		.byte	0x1
+ 1368 023c 80        		.byte	0x80
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 25
+
+
+ 1369 023d 4602 0000 		.long	0x246
+ 1370 0241 0000 0000 		.long	.LLST13
+ 1371 0245 00        		.byte	0x0
+ 1372 0246 10        		.uleb128 0x10
+ 1373 0247 02        		.byte	0x2
+ 1374 0248 3A00 0000 		.long	0x3a
+ 1375 024c 0A        		.uleb128 0xa
+ 1376 024d 01        		.byte	0x1
+ 1377 024e 0000 0000 		.long	.LASF25
+ 1378 0252 01        		.byte	0x1
+ 1379 0253 91        		.byte	0x91
+ 1380 0254 01        		.byte	0x1
+ 1381 0255 0000 0000 		.long	.LFB10
+ 1382 0259 0000 0000 		.long	.LFE10
+ 1383 025d 02        		.byte	0x2
+ 1384 025e 90        		.byte	0x90
+ 1385 025f 20        		.uleb128 0x20
+ 1386 0260 7402 0000 		.long	0x274
+ 1387 0264 0C        		.uleb128 0xc
+ 1388 0265 0000 0000 		.long	.LASF24
+ 1389 0269 01        		.byte	0x1
+ 1390 026a 90        		.byte	0x90
+ 1391 026b 4602 0000 		.long	0x246
+ 1392 026f 0000 0000 		.long	.LLST15
+ 1393 0273 00        		.byte	0x0
+ 1394 0274 0A        		.uleb128 0xa
+ 1395 0275 01        		.byte	0x1
+ 1396 0276 0000 0000 		.long	.LASF26
+ 1397 027a 01        		.byte	0x1
+ 1398 027b A4        		.byte	0xa4
+ 1399 027c 01        		.byte	0x1
+ 1400 027d 0000 0000 		.long	.LFB11
+ 1401 0281 0000 0000 		.long	.LFE11
+ 1402 0285 02        		.byte	0x2
+ 1403 0286 90        		.byte	0x90
+ 1404 0287 20        		.uleb128 0x20
+ 1405 0288 B202 0000 		.long	0x2b2
+ 1406 028c 0C        		.uleb128 0xc
+ 1407 028d 0000 0000 		.long	.LASF24
+ 1408 0291 01        		.byte	0x1
+ 1409 0292 A3        		.byte	0xa3
+ 1410 0293 B202 0000 		.long	0x2b2
+ 1411 0297 0000 0000 		.long	.LLST17
+ 1412 029b 0B        		.uleb128 0xb
+ 1413 029c 0000 0000 		.long	.LASF27
+ 1414 02a0 01        		.byte	0x1
+ 1415 02a1 A3        		.byte	0xa3
+ 1416 02a2 2C00 0000 		.long	0x2c
+ 1417 02a6 01        		.byte	0x1
+ 1418 02a7 66        		.byte	0x66
+ 1419 02a8 11        		.uleb128 0x11
+ 1420 02a9 6900      		.string	"i"
+ 1421 02ab 01        		.byte	0x1
+ 1422 02ac A5        		.byte	0xa5
+ 1423 02ad 2C00 0000 		.long	0x2c
+ 1424 02b1 00        		.byte	0x0
+ 1425 02b2 10        		.uleb128 0x10
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 26
+
+
+ 1426 02b3 02        		.byte	0x2
+ 1427 02b4 2C00 0000 		.long	0x2c
+ 1428 02b8 0A        		.uleb128 0xa
+ 1429 02b9 01        		.byte	0x1
+ 1430 02ba 0000 0000 		.long	.LASF28
+ 1431 02be 01        		.byte	0x1
+ 1432 02bf B3        		.byte	0xb3
+ 1433 02c0 01        		.byte	0x1
+ 1434 02c1 0000 0000 		.long	.LFB12
+ 1435 02c5 0000 0000 		.long	.LFE12
+ 1436 02c9 02        		.byte	0x2
+ 1437 02ca 90        		.byte	0x90
+ 1438 02cb 20        		.uleb128 0x20
+ 1439 02cc 1B03 0000 		.long	0x31b
+ 1440 02d0 0C        		.uleb128 0xc
+ 1441 02d1 0000 0000 		.long	.LASF24
+ 1442 02d5 01        		.byte	0x1
+ 1443 02d6 B2        		.byte	0xb2
+ 1444 02d7 B202 0000 		.long	0x2b2
+ 1445 02db 0000 0000 		.long	.LLST19
+ 1446 02df 0B        		.uleb128 0xb
+ 1447 02e0 0000 0000 		.long	.LASF27
+ 1448 02e4 01        		.byte	0x1
+ 1449 02e5 B2        		.byte	0xb2
+ 1450 02e6 2C00 0000 		.long	0x2c
+ 1451 02ea 01        		.byte	0x1
+ 1452 02eb 66        		.byte	0x66
+ 1453 02ec 0B        		.uleb128 0xb
+ 1454 02ed 0000 0000 		.long	.LASF29
+ 1455 02f1 01        		.byte	0x1
+ 1456 02f2 B2        		.byte	0xb2
+ 1457 02f3 3A00 0000 		.long	0x3a
+ 1458 02f7 06        		.byte	0x6
+ 1459 02f8 64        		.byte	0x64
+ 1460 02f9 93        		.byte	0x93
+ 1461 02fa 01        		.uleb128 0x1
+ 1462 02fb 65        		.byte	0x65
+ 1463 02fc 93        		.byte	0x93
+ 1464 02fd 01        		.uleb128 0x1
+ 1465 02fe 12        		.uleb128 0x12
+ 1466 02ff 6900      		.string	"i"
+ 1467 0301 01        		.byte	0x1
+ 1468 0302 B4        		.byte	0xb4
+ 1469 0303 2C00 0000 		.long	0x2c
+ 1470 0307 0000 0000 		.long	.LLST20
+ 1471 030b 13        		.uleb128 0x13
+ 1472 030c 0000 0000 		.long	.LASF30
+ 1473 0310 01        		.byte	0x1
+ 1474 0311 B5        		.byte	0xb5
+ 1475 0312 3A00 0000 		.long	0x3a
+ 1476 0316 0000 0000 		.long	.LLST21
+ 1477 031a 00        		.byte	0x0
+ 1478 031b 14        		.uleb128 0x14
+ 1479 031c 01        		.byte	0x1
+ 1480 031d 0000 0000 		.long	.LASF41
+ 1481 0321 01        		.byte	0x1
+ 1482 0322 CC        		.byte	0xcc
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 27
+
+
+ 1483 0323 01        		.byte	0x1
+ 1484 0324 2C00 0000 		.long	0x2c
+ 1485 0328 0000 0000 		.long	.LFB13
+ 1486 032c 0000 0000 		.long	.LFE13
+ 1487 0330 02        		.byte	0x2
+ 1488 0331 90        		.byte	0x90
+ 1489 0332 20        		.uleb128 0x20
+ 1490 0333 5003 0000 		.long	0x350
+ 1491 0337 11        		.uleb128 0x11
+ 1492 0338 6900      		.string	"i"
+ 1493 033a 01        		.byte	0x1
+ 1494 033b CD        		.byte	0xcd
+ 1495 033c 3A00 0000 		.long	0x3a
+ 1496 0340 15        		.uleb128 0x15
+ 1497 0341 C100 0000 		.long	0xc1
+ 1498 0345 0000 0000 		.long	.LBB18
+ 1499 0349 0000 0000 		.long	.LBE18
+ 1500 034d 01        		.byte	0x1
+ 1501 034e D2        		.byte	0xd2
+ 1502 034f 00        		.byte	0x0
+ 1503 0350 06        		.uleb128 0x6
+ 1504 0351 01        		.byte	0x1
+ 1505 0352 0000 0000 		.long	.LASF32
+ 1506 0356 01        		.byte	0x1
+ 1507 0357 E0        		.byte	0xe0
+ 1508 0358 01        		.byte	0x1
+ 1509 0359 0000 0000 		.long	.LFB14
+ 1510 035d 0000 0000 		.long	.LFE14
+ 1511 0361 02        		.byte	0x2
+ 1512 0362 90        		.byte	0x90
+ 1513 0363 20        		.uleb128 0x20
+ 1514 0364 06        		.uleb128 0x6
+ 1515 0365 01        		.byte	0x1
+ 1516 0366 0000 0000 		.long	.LASF33
+ 1517 036a 01        		.byte	0x1
+ 1518 036b E8        		.byte	0xe8
+ 1519 036c 01        		.byte	0x1
+ 1520 036d 0000 0000 		.long	.LFB15
+ 1521 0371 0000 0000 		.long	.LFE15
+ 1522 0375 02        		.byte	0x2
+ 1523 0376 90        		.byte	0x90
+ 1524 0377 20        		.uleb128 0x20
+ 1525 0378 07        		.uleb128 0x7
+ 1526 0379 C100 0000 		.long	0xc1
+ 1527 037d 0000 0000 		.long	.LFB16
+ 1528 0381 0000 0000 		.long	.LFE16
+ 1529 0385 02        		.byte	0x2
+ 1530 0386 90        		.byte	0x90
+ 1531 0387 20        		.uleb128 0x20
+ 1532 0388 9603 0000 		.long	0x396
+ 1533 038c 08        		.uleb128 0x8
+ 1534 038d CF00 0000 		.long	0xcf
+ 1535 0391 0000 0000 		.long	.LLST26
+ 1536 0395 00        		.byte	0x0
+ 1537 0396 0A        		.uleb128 0xa
+ 1538 0397 01        		.byte	0x1
+ 1539 0398 0000 0000 		.long	.LASF34
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 28
+
+
+ 1540 039c 01        		.byte	0x1
+ 1541 039d F6        		.byte	0xf6
+ 1542 039e 01        		.byte	0x1
+ 1543 039f 0000 0000 		.long	.LFB17
+ 1544 03a3 0000 0000 		.long	.LFE17
+ 1545 03a7 02        		.byte	0x2
+ 1546 03a8 90        		.byte	0x90
+ 1547 03a9 20        		.uleb128 0x20
+ 1548 03aa DD03 0000 		.long	0x3dd
+ 1549 03ae 0C        		.uleb128 0xc
+ 1550 03af 0000 0000 		.long	.LASF35
+ 1551 03b3 01        		.byte	0x1
+ 1552 03b4 F5        		.byte	0xf5
+ 1553 03b5 3A00 0000 		.long	0x3a
+ 1554 03b9 0000 0000 		.long	.LLST28
+ 1555 03bd 16        		.uleb128 0x16
+ 1556 03be 6900      		.string	"i"
+ 1557 03c0 01        		.byte	0x1
+ 1558 03c1 FA        		.byte	0xfa
+ 1559 03c2 3A00 0000 		.long	0x3a
+ 1560 03c6 06        		.byte	0x6
+ 1561 03c7 62        		.byte	0x62
+ 1562 03c8 93        		.byte	0x93
+ 1563 03c9 01        		.uleb128 0x1
+ 1564 03ca 63        		.byte	0x63
+ 1565 03cb 93        		.byte	0x93
+ 1566 03cc 01        		.uleb128 0x1
+ 1567 03cd 15        		.uleb128 0x15
+ 1568 03ce C100 0000 		.long	0xc1
+ 1569 03d2 0000 0000 		.long	.LBB20
+ 1570 03d6 0000 0000 		.long	.LBE20
+ 1571 03da 01        		.byte	0x1
+ 1572 03db FD        		.byte	0xfd
+ 1573 03dc 00        		.byte	0x0
+ 1574 03dd 17        		.uleb128 0x17
+ 1575 03de 01        		.byte	0x1
+ 1576 03df 0000 0000 		.long	.LASF42
+ 1577 03e3 01        		.byte	0x1
+ 1578 03e4 0101      		.word	0x101
+ 1579 03e6 01        		.byte	0x1
+ 1580 03e7 4800 0000 		.long	0x48
+ 1581 03eb 0000 0000 		.long	.LFB18
+ 1582 03ef 0000 0000 		.long	.LFE18
+ 1583 03f3 02        		.byte	0x2
+ 1584 03f4 90        		.byte	0x90
+ 1585 03f5 20        		.uleb128 0x20
+ 1586 03f6 18        		.uleb128 0x18
+ 1587 03f7 0000 0000 		.long	.LASF36
+ 1588 03fb 01        		.byte	0x1
+ 1589 03fc 1E        		.byte	0x1e
+ 1590 03fd 0804 0000 		.long	0x408
+ 1591 0401 01        		.byte	0x1
+ 1592 0402 05        		.byte	0x5
+ 1593 0403 03        		.byte	0x3
+ 1594 0404 0000 0000 		.long	count72kHz
+ 1595 0408 19        		.uleb128 0x19
+ 1596 0409 2C00 0000 		.long	0x2c
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 29
+
+
+ 1597 040d 18        		.uleb128 0x18
+ 1598 040e 0000 0000 		.long	.LASF37
+ 1599 0412 01        		.byte	0x1
+ 1600 0413 20        		.byte	0x20
+ 1601 0414 1F04 0000 		.long	0x41f
+ 1602 0418 01        		.byte	0x1
+ 1603 0419 05        		.byte	0x5
+ 1604 041a 03        		.byte	0x3
+ 1605 041b 0000 0000 		.long	timebase
+ 1606 041f 19        		.uleb128 0x19
+ 1607 0420 4800 0000 		.long	0x48
+ 1608 0424 00        		.byte	0x0
+ 1609               		.section	.debug_abbrev
+ 1610 0000 01        		.uleb128 0x1
+ 1611 0001 11        		.uleb128 0x11
+ 1612 0002 01        		.byte	0x1
+ 1613 0003 25        		.uleb128 0x25
+ 1614 0004 0E        		.uleb128 0xe
+ 1615 0005 13        		.uleb128 0x13
+ 1616 0006 0B        		.uleb128 0xb
+ 1617 0007 03        		.uleb128 0x3
+ 1618 0008 0E        		.uleb128 0xe
+ 1619 0009 1B        		.uleb128 0x1b
+ 1620 000a 0E        		.uleb128 0xe
+ 1621 000b 11        		.uleb128 0x11
+ 1622 000c 01        		.uleb128 0x1
+ 1623 000d 12        		.uleb128 0x12
+ 1624 000e 01        		.uleb128 0x1
+ 1625 000f 10        		.uleb128 0x10
+ 1626 0010 06        		.uleb128 0x6
+ 1627 0011 00        		.byte	0x0
+ 1628 0012 00        		.byte	0x0
+ 1629 0013 02        		.uleb128 0x2
+ 1630 0014 24        		.uleb128 0x24
+ 1631 0015 00        		.byte	0x0
+ 1632 0016 0B        		.uleb128 0xb
+ 1633 0017 0B        		.uleb128 0xb
+ 1634 0018 3E        		.uleb128 0x3e
+ 1635 0019 0B        		.uleb128 0xb
+ 1636 001a 03        		.uleb128 0x3
+ 1637 001b 0E        		.uleb128 0xe
+ 1638 001c 00        		.byte	0x0
+ 1639 001d 00        		.byte	0x0
+ 1640 001e 03        		.uleb128 0x3
+ 1641 001f 24        		.uleb128 0x24
+ 1642 0020 00        		.byte	0x0
+ 1643 0021 0B        		.uleb128 0xb
+ 1644 0022 0B        		.uleb128 0xb
+ 1645 0023 3E        		.uleb128 0x3e
+ 1646 0024 0B        		.uleb128 0xb
+ 1647 0025 03        		.uleb128 0x3
+ 1648 0026 08        		.uleb128 0x8
+ 1649 0027 00        		.byte	0x0
+ 1650 0028 00        		.byte	0x0
+ 1651 0029 04        		.uleb128 0x4
+ 1652 002a 2E        		.uleb128 0x2e
+ 1653 002b 01        		.byte	0x1
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 30
+
+
+ 1654 002c 3F        		.uleb128 0x3f
+ 1655 002d 0C        		.uleb128 0xc
+ 1656 002e 03        		.uleb128 0x3
+ 1657 002f 0E        		.uleb128 0xe
+ 1658 0030 3A        		.uleb128 0x3a
+ 1659 0031 0B        		.uleb128 0xb
+ 1660 0032 3B        		.uleb128 0x3b
+ 1661 0033 0B        		.uleb128 0xb
+ 1662 0034 27        		.uleb128 0x27
+ 1663 0035 0C        		.uleb128 0xc
+ 1664 0036 20        		.uleb128 0x20
+ 1665 0037 0B        		.uleb128 0xb
+ 1666 0038 01        		.uleb128 0x1
+ 1667 0039 13        		.uleb128 0x13
+ 1668 003a 00        		.byte	0x0
+ 1669 003b 00        		.byte	0x0
+ 1670 003c 05        		.uleb128 0x5
+ 1671 003d 05        		.uleb128 0x5
+ 1672 003e 00        		.byte	0x0
+ 1673 003f 03        		.uleb128 0x3
+ 1674 0040 0E        		.uleb128 0xe
+ 1675 0041 3A        		.uleb128 0x3a
+ 1676 0042 0B        		.uleb128 0xb
+ 1677 0043 3B        		.uleb128 0x3b
+ 1678 0044 0B        		.uleb128 0xb
+ 1679 0045 49        		.uleb128 0x49
+ 1680 0046 13        		.uleb128 0x13
+ 1681 0047 00        		.byte	0x0
+ 1682 0048 00        		.byte	0x0
+ 1683 0049 06        		.uleb128 0x6
+ 1684 004a 2E        		.uleb128 0x2e
+ 1685 004b 00        		.byte	0x0
+ 1686 004c 3F        		.uleb128 0x3f
+ 1687 004d 0C        		.uleb128 0xc
+ 1688 004e 03        		.uleb128 0x3
+ 1689 004f 0E        		.uleb128 0xe
+ 1690 0050 3A        		.uleb128 0x3a
+ 1691 0051 0B        		.uleb128 0xb
+ 1692 0052 3B        		.uleb128 0x3b
+ 1693 0053 0B        		.uleb128 0xb
+ 1694 0054 27        		.uleb128 0x27
+ 1695 0055 0C        		.uleb128 0xc
+ 1696 0056 11        		.uleb128 0x11
+ 1697 0057 01        		.uleb128 0x1
+ 1698 0058 12        		.uleb128 0x12
+ 1699 0059 01        		.uleb128 0x1
+ 1700 005a 40        		.uleb128 0x40
+ 1701 005b 0A        		.uleb128 0xa
+ 1702 005c 00        		.byte	0x0
+ 1703 005d 00        		.byte	0x0
+ 1704 005e 07        		.uleb128 0x7
+ 1705 005f 2E        		.uleb128 0x2e
+ 1706 0060 01        		.byte	0x1
+ 1707 0061 31        		.uleb128 0x31
+ 1708 0062 13        		.uleb128 0x13
+ 1709 0063 11        		.uleb128 0x11
+ 1710 0064 01        		.uleb128 0x1
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 31
+
+
+ 1711 0065 12        		.uleb128 0x12
+ 1712 0066 01        		.uleb128 0x1
+ 1713 0067 40        		.uleb128 0x40
+ 1714 0068 0A        		.uleb128 0xa
+ 1715 0069 01        		.uleb128 0x1
+ 1716 006a 13        		.uleb128 0x13
+ 1717 006b 00        		.byte	0x0
+ 1718 006c 00        		.byte	0x0
+ 1719 006d 08        		.uleb128 0x8
+ 1720 006e 05        		.uleb128 0x5
+ 1721 006f 00        		.byte	0x0
+ 1722 0070 31        		.uleb128 0x31
+ 1723 0071 13        		.uleb128 0x13
+ 1724 0072 02        		.uleb128 0x2
+ 1725 0073 06        		.uleb128 0x6
+ 1726 0074 00        		.byte	0x0
+ 1727 0075 00        		.byte	0x0
+ 1728 0076 09        		.uleb128 0x9
+ 1729 0077 05        		.uleb128 0x5
+ 1730 0078 00        		.byte	0x0
+ 1731 0079 31        		.uleb128 0x31
+ 1732 007a 13        		.uleb128 0x13
+ 1733 007b 02        		.uleb128 0x2
+ 1734 007c 0A        		.uleb128 0xa
+ 1735 007d 00        		.byte	0x0
+ 1736 007e 00        		.byte	0x0
+ 1737 007f 0A        		.uleb128 0xa
+ 1738 0080 2E        		.uleb128 0x2e
+ 1739 0081 01        		.byte	0x1
+ 1740 0082 3F        		.uleb128 0x3f
+ 1741 0083 0C        		.uleb128 0xc
+ 1742 0084 03        		.uleb128 0x3
+ 1743 0085 0E        		.uleb128 0xe
+ 1744 0086 3A        		.uleb128 0x3a
+ 1745 0087 0B        		.uleb128 0xb
+ 1746 0088 3B        		.uleb128 0x3b
+ 1747 0089 0B        		.uleb128 0xb
+ 1748 008a 27        		.uleb128 0x27
+ 1749 008b 0C        		.uleb128 0xc
+ 1750 008c 11        		.uleb128 0x11
+ 1751 008d 01        		.uleb128 0x1
+ 1752 008e 12        		.uleb128 0x12
+ 1753 008f 01        		.uleb128 0x1
+ 1754 0090 40        		.uleb128 0x40
+ 1755 0091 0A        		.uleb128 0xa
+ 1756 0092 01        		.uleb128 0x1
+ 1757 0093 13        		.uleb128 0x13
+ 1758 0094 00        		.byte	0x0
+ 1759 0095 00        		.byte	0x0
+ 1760 0096 0B        		.uleb128 0xb
+ 1761 0097 05        		.uleb128 0x5
+ 1762 0098 00        		.byte	0x0
+ 1763 0099 03        		.uleb128 0x3
+ 1764 009a 0E        		.uleb128 0xe
+ 1765 009b 3A        		.uleb128 0x3a
+ 1766 009c 0B        		.uleb128 0xb
+ 1767 009d 3B        		.uleb128 0x3b
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 32
+
+
+ 1768 009e 0B        		.uleb128 0xb
+ 1769 009f 49        		.uleb128 0x49
+ 1770 00a0 13        		.uleb128 0x13
+ 1771 00a1 02        		.uleb128 0x2
+ 1772 00a2 0A        		.uleb128 0xa
+ 1773 00a3 00        		.byte	0x0
+ 1774 00a4 00        		.byte	0x0
+ 1775 00a5 0C        		.uleb128 0xc
+ 1776 00a6 05        		.uleb128 0x5
+ 1777 00a7 00        		.byte	0x0
+ 1778 00a8 03        		.uleb128 0x3
+ 1779 00a9 0E        		.uleb128 0xe
+ 1780 00aa 3A        		.uleb128 0x3a
+ 1781 00ab 0B        		.uleb128 0xb
+ 1782 00ac 3B        		.uleb128 0x3b
+ 1783 00ad 0B        		.uleb128 0xb
+ 1784 00ae 49        		.uleb128 0x49
+ 1785 00af 13        		.uleb128 0x13
+ 1786 00b0 02        		.uleb128 0x2
+ 1787 00b1 06        		.uleb128 0x6
+ 1788 00b2 00        		.byte	0x0
+ 1789 00b3 00        		.byte	0x0
+ 1790 00b4 0D        		.uleb128 0xd
+ 1791 00b5 1D        		.uleb128 0x1d
+ 1792 00b6 01        		.byte	0x1
+ 1793 00b7 31        		.uleb128 0x31
+ 1794 00b8 13        		.uleb128 0x13
+ 1795 00b9 11        		.uleb128 0x11
+ 1796 00ba 01        		.uleb128 0x1
+ 1797 00bb 12        		.uleb128 0x12
+ 1798 00bc 01        		.uleb128 0x1
+ 1799 00bd 58        		.uleb128 0x58
+ 1800 00be 0B        		.uleb128 0xb
+ 1801 00bf 59        		.uleb128 0x59
+ 1802 00c0 0B        		.uleb128 0xb
+ 1803 00c1 01        		.uleb128 0x1
+ 1804 00c2 13        		.uleb128 0x13
+ 1805 00c3 00        		.byte	0x0
+ 1806 00c4 00        		.byte	0x0
+ 1807 00c5 0E        		.uleb128 0xe
+ 1808 00c6 05        		.uleb128 0x5
+ 1809 00c7 00        		.byte	0x0
+ 1810 00c8 31        		.uleb128 0x31
+ 1811 00c9 13        		.uleb128 0x13
+ 1812 00ca 00        		.byte	0x0
+ 1813 00cb 00        		.byte	0x0
+ 1814 00cc 0F        		.uleb128 0xf
+ 1815 00cd 1D        		.uleb128 0x1d
+ 1816 00ce 01        		.byte	0x1
+ 1817 00cf 31        		.uleb128 0x31
+ 1818 00d0 13        		.uleb128 0x13
+ 1819 00d1 11        		.uleb128 0x11
+ 1820 00d2 01        		.uleb128 0x1
+ 1821 00d3 12        		.uleb128 0x12
+ 1822 00d4 01        		.uleb128 0x1
+ 1823 00d5 58        		.uleb128 0x58
+ 1824 00d6 0B        		.uleb128 0xb
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 33
+
+
+ 1825 00d7 59        		.uleb128 0x59
+ 1826 00d8 0B        		.uleb128 0xb
+ 1827 00d9 00        		.byte	0x0
+ 1828 00da 00        		.byte	0x0
+ 1829 00db 10        		.uleb128 0x10
+ 1830 00dc 0F        		.uleb128 0xf
+ 1831 00dd 00        		.byte	0x0
+ 1832 00de 0B        		.uleb128 0xb
+ 1833 00df 0B        		.uleb128 0xb
+ 1834 00e0 49        		.uleb128 0x49
+ 1835 00e1 13        		.uleb128 0x13
+ 1836 00e2 00        		.byte	0x0
+ 1837 00e3 00        		.byte	0x0
+ 1838 00e4 11        		.uleb128 0x11
+ 1839 00e5 34        		.uleb128 0x34
+ 1840 00e6 00        		.byte	0x0
+ 1841 00e7 03        		.uleb128 0x3
+ 1842 00e8 08        		.uleb128 0x8
+ 1843 00e9 3A        		.uleb128 0x3a
+ 1844 00ea 0B        		.uleb128 0xb
+ 1845 00eb 3B        		.uleb128 0x3b
+ 1846 00ec 0B        		.uleb128 0xb
+ 1847 00ed 49        		.uleb128 0x49
+ 1848 00ee 13        		.uleb128 0x13
+ 1849 00ef 00        		.byte	0x0
+ 1850 00f0 00        		.byte	0x0
+ 1851 00f1 12        		.uleb128 0x12
+ 1852 00f2 34        		.uleb128 0x34
+ 1853 00f3 00        		.byte	0x0
+ 1854 00f4 03        		.uleb128 0x3
+ 1855 00f5 08        		.uleb128 0x8
+ 1856 00f6 3A        		.uleb128 0x3a
+ 1857 00f7 0B        		.uleb128 0xb
+ 1858 00f8 3B        		.uleb128 0x3b
+ 1859 00f9 0B        		.uleb128 0xb
+ 1860 00fa 49        		.uleb128 0x49
+ 1861 00fb 13        		.uleb128 0x13
+ 1862 00fc 02        		.uleb128 0x2
+ 1863 00fd 06        		.uleb128 0x6
+ 1864 00fe 00        		.byte	0x0
+ 1865 00ff 00        		.byte	0x0
+ 1866 0100 13        		.uleb128 0x13
+ 1867 0101 34        		.uleb128 0x34
+ 1868 0102 00        		.byte	0x0
+ 1869 0103 03        		.uleb128 0x3
+ 1870 0104 0E        		.uleb128 0xe
+ 1871 0105 3A        		.uleb128 0x3a
+ 1872 0106 0B        		.uleb128 0xb
+ 1873 0107 3B        		.uleb128 0x3b
+ 1874 0108 0B        		.uleb128 0xb
+ 1875 0109 49        		.uleb128 0x49
+ 1876 010a 13        		.uleb128 0x13
+ 1877 010b 02        		.uleb128 0x2
+ 1878 010c 06        		.uleb128 0x6
+ 1879 010d 00        		.byte	0x0
+ 1880 010e 00        		.byte	0x0
+ 1881 010f 14        		.uleb128 0x14
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 34
+
+
+ 1882 0110 2E        		.uleb128 0x2e
+ 1883 0111 01        		.byte	0x1
+ 1884 0112 3F        		.uleb128 0x3f
+ 1885 0113 0C        		.uleb128 0xc
+ 1886 0114 03        		.uleb128 0x3
+ 1887 0115 0E        		.uleb128 0xe
+ 1888 0116 3A        		.uleb128 0x3a
+ 1889 0117 0B        		.uleb128 0xb
+ 1890 0118 3B        		.uleb128 0x3b
+ 1891 0119 0B        		.uleb128 0xb
+ 1892 011a 27        		.uleb128 0x27
+ 1893 011b 0C        		.uleb128 0xc
+ 1894 011c 49        		.uleb128 0x49
+ 1895 011d 13        		.uleb128 0x13
+ 1896 011e 11        		.uleb128 0x11
+ 1897 011f 01        		.uleb128 0x1
+ 1898 0120 12        		.uleb128 0x12
+ 1899 0121 01        		.uleb128 0x1
+ 1900 0122 40        		.uleb128 0x40
+ 1901 0123 0A        		.uleb128 0xa
+ 1902 0124 01        		.uleb128 0x1
+ 1903 0125 13        		.uleb128 0x13
+ 1904 0126 00        		.byte	0x0
+ 1905 0127 00        		.byte	0x0
+ 1906 0128 15        		.uleb128 0x15
+ 1907 0129 1D        		.uleb128 0x1d
+ 1908 012a 00        		.byte	0x0
+ 1909 012b 31        		.uleb128 0x31
+ 1910 012c 13        		.uleb128 0x13
+ 1911 012d 11        		.uleb128 0x11
+ 1912 012e 01        		.uleb128 0x1
+ 1913 012f 12        		.uleb128 0x12
+ 1914 0130 01        		.uleb128 0x1
+ 1915 0131 58        		.uleb128 0x58
+ 1916 0132 0B        		.uleb128 0xb
+ 1917 0133 59        		.uleb128 0x59
+ 1918 0134 0B        		.uleb128 0xb
+ 1919 0135 00        		.byte	0x0
+ 1920 0136 00        		.byte	0x0
+ 1921 0137 16        		.uleb128 0x16
+ 1922 0138 34        		.uleb128 0x34
+ 1923 0139 00        		.byte	0x0
+ 1924 013a 03        		.uleb128 0x3
+ 1925 013b 08        		.uleb128 0x8
+ 1926 013c 3A        		.uleb128 0x3a
+ 1927 013d 0B        		.uleb128 0xb
+ 1928 013e 3B        		.uleb128 0x3b
+ 1929 013f 0B        		.uleb128 0xb
+ 1930 0140 49        		.uleb128 0x49
+ 1931 0141 13        		.uleb128 0x13
+ 1932 0142 02        		.uleb128 0x2
+ 1933 0143 0A        		.uleb128 0xa
+ 1934 0144 00        		.byte	0x0
+ 1935 0145 00        		.byte	0x0
+ 1936 0146 17        		.uleb128 0x17
+ 1937 0147 2E        		.uleb128 0x2e
+ 1938 0148 00        		.byte	0x0
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 35
+
+
+ 1939 0149 3F        		.uleb128 0x3f
+ 1940 014a 0C        		.uleb128 0xc
+ 1941 014b 03        		.uleb128 0x3
+ 1942 014c 0E        		.uleb128 0xe
+ 1943 014d 3A        		.uleb128 0x3a
+ 1944 014e 0B        		.uleb128 0xb
+ 1945 014f 3B        		.uleb128 0x3b
+ 1946 0150 05        		.uleb128 0x5
+ 1947 0151 27        		.uleb128 0x27
+ 1948 0152 0C        		.uleb128 0xc
+ 1949 0153 49        		.uleb128 0x49
+ 1950 0154 13        		.uleb128 0x13
+ 1951 0155 11        		.uleb128 0x11
+ 1952 0156 01        		.uleb128 0x1
+ 1953 0157 12        		.uleb128 0x12
+ 1954 0158 01        		.uleb128 0x1
+ 1955 0159 40        		.uleb128 0x40
+ 1956 015a 0A        		.uleb128 0xa
+ 1957 015b 00        		.byte	0x0
+ 1958 015c 00        		.byte	0x0
+ 1959 015d 18        		.uleb128 0x18
+ 1960 015e 34        		.uleb128 0x34
+ 1961 015f 00        		.byte	0x0
+ 1962 0160 03        		.uleb128 0x3
+ 1963 0161 0E        		.uleb128 0xe
+ 1964 0162 3A        		.uleb128 0x3a
+ 1965 0163 0B        		.uleb128 0xb
+ 1966 0164 3B        		.uleb128 0x3b
+ 1967 0165 0B        		.uleb128 0xb
+ 1968 0166 49        		.uleb128 0x49
+ 1969 0167 13        		.uleb128 0x13
+ 1970 0168 3F        		.uleb128 0x3f
+ 1971 0169 0C        		.uleb128 0xc
+ 1972 016a 02        		.uleb128 0x2
+ 1973 016b 0A        		.uleb128 0xa
+ 1974 016c 00        		.byte	0x0
+ 1975 016d 00        		.byte	0x0
+ 1976 016e 19        		.uleb128 0x19
+ 1977 016f 35        		.uleb128 0x35
+ 1978 0170 00        		.byte	0x0
+ 1979 0171 49        		.uleb128 0x49
+ 1980 0172 13        		.uleb128 0x13
+ 1981 0173 00        		.byte	0x0
+ 1982 0174 00        		.byte	0x0
+ 1983 0175 00        		.byte	0x0
+ 1984               		.section	.debug_pubnames,"",@progbits
+ 1985 0000 0C01 0000 		.long	0x10c
+ 1986 0004 0200      		.word	0x2
+ 1987 0006 0000 0000 		.long	.Ldebug_info0
+ 1988 000a 2504 0000 		.long	0x425
+ 1989 000e DB00 0000 		.long	0xdb
+ 1990 0012 5F5F 7665 		.string	"__vector_3"
+ 1990      6374 6F72 
+ 1990      5F33 00
+ 1991 001d EF00 0000 		.long	0xef
+ 1992 0021 4D6F 746F 		.string	"MotorSpeed"
+ 1992      7253 7065 
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 36
+
+
+ 1992      6564 00
+ 1993 002c 1601 0000 		.long	0x116
+ 1994 0030 4D6F 746F 		.string	"MotorDir"
+ 1994      7244 6972 
+ 1994      00
+ 1995 0039 3B01 0000 		.long	0x13b
+ 1996 003d 5374 6174 		.string	"StatusLED"
+ 1996      7573 4C45 
+ 1996      4400 
+ 1997 0047 6101 0000 		.long	0x161
+ 1998 004b 4672 6F6E 		.string	"FrontLED"
+ 1998      744C 4544 
+ 1998      00
+ 1999 0054 7F01 0000 		.long	0x17f
+ 2000 0058 4261 636B 		.string	"BackLED"
+ 2000      4C45 4400 
+ 2001 0060 B401 0000 		.long	0x1b4
+ 2002 0064 496E 6974 		.string	"Init"
+ 2002      00
+ 2003 0069 1E02 0000 		.long	0x21e
+ 2004 006d 4C69 6E65 		.string	"LineData"
+ 2004      4461 7461 
+ 2004      00
+ 2005 0076 4C02 0000 		.long	0x24c
+ 2006 007a 4F64 6F6D 		.string	"OdometrieData"
+ 2006      6574 7269 
+ 2006      6544 6174 
+ 2006      6100 
+ 2007 0088 7402 0000 		.long	0x274
+ 2008 008c 5365 7257 		.string	"SerWrite"
+ 2008      7269 7465 
+ 2008      00
+ 2009 0095 B802 0000 		.long	0x2b8
+ 2010 0099 5365 7252 		.string	"SerRead"
+ 2010      6561 6400 
+ 2011 00a1 1B03 0000 		.long	0x31b
+ 2012 00a5 506F 6C6C 		.string	"PollSwitch"
+ 2012      5377 6974 
+ 2012      6368 00
+ 2013 00b0 5003 0000 		.long	0x350
+ 2014 00b4 5374 6172 		.string	"StartSwitch"
+ 2014      7453 7769 
+ 2014      7463 6800 
+ 2015 00c0 6403 0000 		.long	0x364
+ 2016 00c4 5374 6F70 		.string	"StopSwitch"
+ 2016      5377 6974 
+ 2016      6368 00
+ 2017 00cf 7803 0000 		.long	0x378
+ 2018 00d3 536C 6565 		.string	"Sleep"
+ 2018      7000 
+ 2019 00d9 9603 0000 		.long	0x396
+ 2020 00dd 4D73 6C65 		.string	"Msleep"
+ 2020      6570 00
+ 2021 00e4 DD03 0000 		.long	0x3dd
+ 2022 00e8 4765 7454 		.string	"GetTime"
+ 2022      696D 6500 
+ 2023 00f0 F603 0000 		.long	0x3f6
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 37
+
+
+ 2024 00f4 636F 756E 		.string	"count72kHz"
+ 2024      7437 326B 
+ 2024      487A 00
+ 2025 00ff 0D04 0000 		.long	0x40d
+ 2026 0103 7469 6D65 		.string	"timebase"
+ 2026      6261 7365 
+ 2026      00
+ 2027 010c 0000 0000 		.long	0x0
+ 2028               		.section	.debug_aranges,"",@progbits
+ 2029 0000 1C00 0000 		.long	0x1c
+ 2030 0004 0200      		.word	0x2
+ 2031 0006 0000 0000 		.long	.Ldebug_info0
+ 2032 000a 04        		.byte	0x4
+ 2033 000b 00        		.byte	0x0
+ 2034 000c 0000      		.word	0x0
+ 2035 000e 0000      		.word	0x0
+ 2036 0010 0000 0000 		.long	.Ltext0
+ 2037 0014 FE02 0000 		.long	.Letext0-.Ltext0
+ 2038 0018 0000 0000 		.long	0x0
+ 2039 001c 0000 0000 		.long	0x0
+ 2040               		.section	.debug_line
+ 2041 0000 3A04 0000 		.long	.LELT0-.LSLT0
+ 2042               	.LSLT0:
+ 2043 0004 0200      		.word	0x2
+ 2044 0006 1B00 0000 		.long	.LELTP0-.LASLTP0
+ 2045               	.LASLTP0:
+ 2046 000a 01        		.byte	0x1
+ 2047 000b 01        		.byte	0x1
+ 2048 000c F6        		.byte	0xf6
+ 2049 000d F5        		.byte	0xf5
+ 2050 000e 0A        		.byte	0xa
+ 2051 000f 00        		.byte	0x0
+ 2052 0010 01        		.byte	0x1
+ 2053 0011 01        		.byte	0x1
+ 2054 0012 01        		.byte	0x1
+ 2055 0013 01        		.byte	0x1
+ 2056 0014 00        		.byte	0x0
+ 2057 0015 00        		.byte	0x0
+ 2058 0016 00        		.byte	0x0
+ 2059 0017 01        		.byte	0x1
+ 2060 0018 00        		.byte	0x0
+ 2061 0019 6173 7572 		.string	"asuro.c"
+ 2061      6F2E 6300 
+ 2062 0021 00        		.uleb128 0x0
+ 2063 0022 00        		.uleb128 0x0
+ 2064 0023 00        		.uleb128 0x0
+ 2065 0024 00        		.byte	0x0
+ 2066               	.LELTP0:
+ 2067 0025 00        		.byte	0x0
+ 2068 0026 05        		.uleb128 0x5
+ 2069 0027 02        		.byte	0x2
+ 2070 0028 0000 0000 		.long	.LM1
+ 2071 002c 38        		.byte	0x38
+ 2072 002d 00        		.byte	0x0
+ 2073 002e 05        		.uleb128 0x5
+ 2074 002f 02        		.byte	0x2
+ 2075 0030 0000 0000 		.long	.LM2
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 38
+
+
+ 2076 0034 15        		.byte	0x15
+ 2077 0035 00        		.byte	0x0
+ 2078 0036 05        		.uleb128 0x5
+ 2079 0037 02        		.byte	0x2
+ 2080 0038 0000 0000 		.long	.LM3
+ 2081 003c 15        		.byte	0x15
+ 2082 003d 00        		.byte	0x0
+ 2083 003e 05        		.uleb128 0x5
+ 2084 003f 02        		.byte	0x2
+ 2085 0040 0000 0000 		.long	.LM4
+ 2086 0044 15        		.byte	0x15
+ 2087 0045 00        		.byte	0x0
+ 2088 0046 05        		.uleb128 0x5
+ 2089 0047 02        		.byte	0x2
+ 2090 0048 0000 0000 		.long	.LM5
+ 2091 004c 3E        		.byte	0x3e
+ 2092 004d 00        		.byte	0x0
+ 2093 004e 05        		.uleb128 0x5
+ 2094 004f 02        		.byte	0x2
+ 2095 0050 0000 0000 		.long	.LM6
+ 2096 0054 15        		.byte	0x15
+ 2097 0055 00        		.byte	0x0
+ 2098 0056 05        		.uleb128 0x5
+ 2099 0057 02        		.byte	0x2
+ 2100 0058 0000 0000 		.long	.LM7
+ 2101 005c 15        		.byte	0x15
+ 2102 005d 00        		.byte	0x0
+ 2103 005e 05        		.uleb128 0x5
+ 2104 005f 02        		.byte	0x2
+ 2105 0060 0000 0000 		.long	.LM8
+ 2106 0064 15        		.byte	0x15
+ 2107 0065 00        		.byte	0x0
+ 2108 0066 05        		.uleb128 0x5
+ 2109 0067 02        		.byte	0x2
+ 2110 0068 0000 0000 		.long	.LM9
+ 2111 006c 18        		.byte	0x18
+ 2112 006d 00        		.byte	0x0
+ 2113 006e 05        		.uleb128 0x5
+ 2114 006f 02        		.byte	0x2
+ 2115 0070 0000 0000 		.long	.LM10
+ 2116 0074 15        		.byte	0x15
+ 2117 0075 00        		.byte	0x0
+ 2118 0076 05        		.uleb128 0x5
+ 2119 0077 02        		.byte	0x2
+ 2120 0078 0000 0000 		.long	.LM11
+ 2121 007c 15        		.byte	0x15
+ 2122 007d 00        		.byte	0x0
+ 2123 007e 05        		.uleb128 0x5
+ 2124 007f 02        		.byte	0x2
+ 2125 0080 0000 0000 		.long	.LM12
+ 2126 0084 15        		.byte	0x15
+ 2127 0085 00        		.byte	0x0
+ 2128 0086 05        		.uleb128 0x5
+ 2129 0087 02        		.byte	0x2
+ 2130 0088 0000 0000 		.long	.LM13
+ 2131 008c 1A        		.byte	0x1a
+ 2132 008d 00        		.byte	0x0
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 39
+
+
+ 2133 008e 05        		.uleb128 0x5
+ 2134 008f 02        		.byte	0x2
+ 2135 0090 0000 0000 		.long	.LM14
+ 2136 0094 15        		.byte	0x15
+ 2137 0095 00        		.byte	0x0
+ 2138 0096 05        		.uleb128 0x5
+ 2139 0097 02        		.byte	0x2
+ 2140 0098 0000 0000 		.long	.LM15
+ 2141 009c 15        		.byte	0x15
+ 2142 009d 00        		.byte	0x0
+ 2143 009e 05        		.uleb128 0x5
+ 2144 009f 02        		.byte	0x2
+ 2145 00a0 0000 0000 		.long	.LM16
+ 2146 00a4 15        		.byte	0x15
+ 2147 00a5 00        		.byte	0x0
+ 2148 00a6 05        		.uleb128 0x5
+ 2149 00a7 02        		.byte	0x2
+ 2150 00a8 0000 0000 		.long	.LM17
+ 2151 00ac 15        		.byte	0x15
+ 2152 00ad 00        		.byte	0x0
+ 2153 00ae 05        		.uleb128 0x5
+ 2154 00af 02        		.byte	0x2
+ 2155 00b0 0000 0000 		.long	.LM18
+ 2156 00b4 1B        		.byte	0x1b
+ 2157 00b5 00        		.byte	0x0
+ 2158 00b6 05        		.uleb128 0x5
+ 2159 00b7 02        		.byte	0x2
+ 2160 00b8 0000 0000 		.long	.LM19
+ 2161 00bc 15        		.byte	0x15
+ 2162 00bd 00        		.byte	0x0
+ 2163 00be 05        		.uleb128 0x5
+ 2164 00bf 02        		.byte	0x2
+ 2165 00c0 0000 0000 		.long	.LM20
+ 2166 00c4 15        		.byte	0x15
+ 2167 00c5 00        		.byte	0x0
+ 2168 00c6 05        		.uleb128 0x5
+ 2169 00c7 02        		.byte	0x2
+ 2170 00c8 0000 0000 		.long	.LM21
+ 2171 00cc 1A        		.byte	0x1a
+ 2172 00cd 00        		.byte	0x0
+ 2173 00ce 05        		.uleb128 0x5
+ 2174 00cf 02        		.byte	0x2
+ 2175 00d0 0000 0000 		.long	.LM22
+ 2176 00d4 15        		.byte	0x15
+ 2177 00d5 00        		.byte	0x0
+ 2178 00d6 05        		.uleb128 0x5
+ 2179 00d7 02        		.byte	0x2
+ 2180 00d8 0000 0000 		.long	.LM23
+ 2181 00dc 15        		.byte	0x15
+ 2182 00dd 00        		.byte	0x0
+ 2183 00de 05        		.uleb128 0x5
+ 2184 00df 02        		.byte	0x2
+ 2185 00e0 0000 0000 		.long	.LM24
+ 2186 00e4 15        		.byte	0x15
+ 2187 00e5 00        		.byte	0x0
+ 2188 00e6 05        		.uleb128 0x5
+ 2189 00e7 02        		.byte	0x2
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 40
+
+
+ 2190 00e8 0000 0000 		.long	.LM25
+ 2191 00ec 15        		.byte	0x15
+ 2192 00ed 00        		.byte	0x0
+ 2193 00ee 05        		.uleb128 0x5
+ 2194 00ef 02        		.byte	0x2
+ 2195 00f0 0000 0000 		.long	.LM26
+ 2196 00f4 16        		.byte	0x16
+ 2197 00f5 00        		.byte	0x0
+ 2198 00f6 05        		.uleb128 0x5
+ 2199 00f7 02        		.byte	0x2
+ 2200 00f8 0000 0000 		.long	.LM27
+ 2201 00fc 15        		.byte	0x15
+ 2202 00fd 00        		.byte	0x0
+ 2203 00fe 05        		.uleb128 0x5
+ 2204 00ff 02        		.byte	0x2
+ 2205 0100 0000 0000 		.long	.LM28
+ 2206 0104 03        		.byte	0x3
+ 2207 0105 B07F      		.sleb128 -80
+ 2208 0107 01        		.byte	0x1
+ 2209 0108 00        		.byte	0x0
+ 2210 0109 05        		.uleb128 0x5
+ 2211 010a 02        		.byte	0x2
+ 2212 010b 0000 0000 		.long	.LM29
+ 2213 010f 17        		.byte	0x17
+ 2214 0110 00        		.byte	0x0
+ 2215 0111 05        		.uleb128 0x5
+ 2216 0112 02        		.byte	0x2
+ 2217 0113 0000 0000 		.long	.LM30
+ 2218 0117 15        		.byte	0x15
+ 2219 0118 00        		.byte	0x0
+ 2220 0119 05        		.uleb128 0x5
+ 2221 011a 02        		.byte	0x2
+ 2222 011b 0000 0000 		.long	.LM31
+ 2223 011f 15        		.byte	0x15
+ 2224 0120 00        		.byte	0x0
+ 2225 0121 05        		.uleb128 0x5
+ 2226 0122 02        		.byte	0x2
+ 2227 0123 0000 0000 		.long	.LM32
+ 2228 0127 17        		.byte	0x17
+ 2229 0128 00        		.byte	0x0
+ 2230 0129 05        		.uleb128 0x5
+ 2231 012a 02        		.byte	0x2
+ 2232 012b 0000 0000 		.long	.LM33
+ 2233 012f 15        		.byte	0x15
+ 2234 0130 00        		.byte	0x0
+ 2235 0131 05        		.uleb128 0x5
+ 2236 0132 02        		.byte	0x2
+ 2237 0133 0000 0000 		.long	.LM34
+ 2238 0137 15        		.byte	0x15
+ 2239 0138 00        		.byte	0x0
+ 2240 0139 05        		.uleb128 0x5
+ 2241 013a 02        		.byte	0x2
+ 2242 013b 0000 0000 		.long	.LM35
+ 2243 013f 15        		.byte	0x15
+ 2244 0140 00        		.byte	0x0
+ 2245 0141 05        		.uleb128 0x5
+ 2246 0142 02        		.byte	0x2
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 41
+
+
+ 2247 0143 0000 0000 		.long	.LM36
+ 2248 0147 17        		.byte	0x17
+ 2249 0148 00        		.byte	0x0
+ 2250 0149 05        		.uleb128 0x5
+ 2251 014a 02        		.byte	0x2
+ 2252 014b 0000 0000 		.long	.LM37
+ 2253 014f 15        		.byte	0x15
+ 2254 0150 00        		.byte	0x0
+ 2255 0151 05        		.uleb128 0x5
+ 2256 0152 02        		.byte	0x2
+ 2257 0153 0000 0000 		.long	.LM38
+ 2258 0157 17        		.byte	0x17
+ 2259 0158 00        		.byte	0x0
+ 2260 0159 05        		.uleb128 0x5
+ 2261 015a 02        		.byte	0x2
+ 2262 015b 0000 0000 		.long	.LM39
+ 2263 015f 16        		.byte	0x16
+ 2264 0160 00        		.byte	0x0
+ 2265 0161 05        		.uleb128 0x5
+ 2266 0162 02        		.byte	0x2
+ 2267 0163 0000 0000 		.long	.LM40
+ 2268 0167 17        		.byte	0x17
+ 2269 0168 00        		.byte	0x0
+ 2270 0169 05        		.uleb128 0x5
+ 2271 016a 02        		.byte	0x2
+ 2272 016b 0000 0000 		.long	.LM41
+ 2273 016f 15        		.byte	0x15
+ 2274 0170 00        		.byte	0x0
+ 2275 0171 05        		.uleb128 0x5
+ 2276 0172 02        		.byte	0x2
+ 2277 0173 0000 0000 		.long	.LM42
+ 2278 0177 3E        		.byte	0x3e
+ 2279 0178 00        		.byte	0x0
+ 2280 0179 05        		.uleb128 0x5
+ 2281 017a 02        		.byte	0x2
+ 2282 017b 0000 0000 		.long	.LM43
+ 2283 017f 03        		.byte	0x3
+ 2284 0180 59        		.sleb128 -39
+ 2285 0181 01        		.byte	0x1
+ 2286 0182 00        		.byte	0x0
+ 2287 0183 05        		.uleb128 0x5
+ 2288 0184 02        		.byte	0x2
+ 2289 0185 0000 0000 		.long	.LM44
+ 2290 0189 15        		.byte	0x15
+ 2291 018a 00        		.byte	0x0
+ 2292 018b 05        		.uleb128 0x5
+ 2293 018c 02        		.byte	0x2
+ 2294 018d 0000 0000 		.long	.LM45
+ 2295 0191 15        		.byte	0x15
+ 2296 0192 00        		.byte	0x0
+ 2297 0193 05        		.uleb128 0x5
+ 2298 0194 02        		.byte	0x2
+ 2299 0195 0000 0000 		.long	.LM46
+ 2300 0199 25        		.byte	0x25
+ 2301 019a 00        		.byte	0x0
+ 2302 019b 05        		.uleb128 0x5
+ 2303 019c 02        		.byte	0x2
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 42
+
+
+ 2304 019d 0000 0000 		.long	.LM47
+ 2305 01a1 15        		.byte	0x15
+ 2306 01a2 00        		.byte	0x0
+ 2307 01a3 05        		.uleb128 0x5
+ 2308 01a4 02        		.byte	0x2
+ 2309 01a5 0000 0000 		.long	.LM48
+ 2310 01a9 0C        		.byte	0xc
+ 2311 01aa 00        		.byte	0x0
+ 2312 01ab 05        		.uleb128 0x5
+ 2313 01ac 02        		.byte	0x2
+ 2314 01ad 0000 0000 		.long	.LM49
+ 2315 01b1 15        		.byte	0x15
+ 2316 01b2 00        		.byte	0x0
+ 2317 01b3 05        		.uleb128 0x5
+ 2318 01b4 02        		.byte	0x2
+ 2319 01b5 0000 0000 		.long	.LM50
+ 2320 01b9 0D        		.byte	0xd
+ 2321 01ba 00        		.byte	0x0
+ 2322 01bb 05        		.uleb128 0x5
+ 2323 01bc 02        		.byte	0x2
+ 2324 01bd 0000 0000 		.long	.LM51
+ 2325 01c1 15        		.byte	0x15
+ 2326 01c2 00        		.byte	0x0
+ 2327 01c3 05        		.uleb128 0x5
+ 2328 01c4 02        		.byte	0x2
+ 2329 01c5 0000 0000 		.long	.LM52
+ 2330 01c9 47        		.byte	0x47
+ 2331 01ca 00        		.byte	0x0
+ 2332 01cb 05        		.uleb128 0x5
+ 2333 01cc 02        		.byte	0x2
+ 2334 01cd 0000 0000 		.long	.LM53
+ 2335 01d1 15        		.byte	0x15
+ 2336 01d2 00        		.byte	0x0
+ 2337 01d3 05        		.uleb128 0x5
+ 2338 01d4 02        		.byte	0x2
+ 2339 01d5 0000 0000 		.long	.LM54
+ 2340 01d9 15        		.byte	0x15
+ 2341 01da 00        		.byte	0x0
+ 2342 01db 05        		.uleb128 0x5
+ 2343 01dc 02        		.byte	0x2
+ 2344 01dd 0000 0000 		.long	.LM55
+ 2345 01e1 15        		.byte	0x15
+ 2346 01e2 00        		.byte	0x0
+ 2347 01e3 05        		.uleb128 0x5
+ 2348 01e4 02        		.byte	0x2
+ 2349 01e5 0000 0000 		.long	.LM56
+ 2350 01e9 15        		.byte	0x15
+ 2351 01ea 00        		.byte	0x0
+ 2352 01eb 05        		.uleb128 0x5
+ 2353 01ec 02        		.byte	0x2
+ 2354 01ed 0000 0000 		.long	.LM57
+ 2355 01f1 15        		.byte	0x15
+ 2356 01f2 00        		.byte	0x0
+ 2357 01f3 05        		.uleb128 0x5
+ 2358 01f4 02        		.byte	0x2
+ 2359 01f5 0000 0000 		.long	.LM58
+ 2360 01f9 16        		.byte	0x16
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 43
+
+
+ 2361 01fa 00        		.byte	0x0
+ 2362 01fb 05        		.uleb128 0x5
+ 2363 01fc 02        		.byte	0x2
+ 2364 01fd 0000 0000 		.long	.LM59
+ 2365 0201 15        		.byte	0x15
+ 2366 0202 00        		.byte	0x0
+ 2367 0203 05        		.uleb128 0x5
+ 2368 0204 02        		.byte	0x2
+ 2369 0205 0000 0000 		.long	.LM60
+ 2370 0209 15        		.byte	0x15
+ 2371 020a 00        		.byte	0x0
+ 2372 020b 05        		.uleb128 0x5
+ 2373 020c 02        		.byte	0x2
+ 2374 020d 0000 0000 		.long	.LM61
+ 2375 0211 15        		.byte	0x15
+ 2376 0212 00        		.byte	0x0
+ 2377 0213 05        		.uleb128 0x5
+ 2378 0214 02        		.byte	0x2
+ 2379 0215 0000 0000 		.long	.LM62
+ 2380 0219 15        		.byte	0x15
+ 2381 021a 00        		.byte	0x0
+ 2382 021b 05        		.uleb128 0x5
+ 2383 021c 02        		.byte	0x2
+ 2384 021d 0000 0000 		.long	.LM63
+ 2385 0221 15        		.byte	0x15
+ 2386 0222 00        		.byte	0x0
+ 2387 0223 05        		.uleb128 0x5
+ 2388 0224 02        		.byte	0x2
+ 2389 0225 0000 0000 		.long	.LM64
+ 2390 0229 18        		.byte	0x18
+ 2391 022a 00        		.byte	0x0
+ 2392 022b 05        		.uleb128 0x5
+ 2393 022c 02        		.byte	0x2
+ 2394 022d 0000 0000 		.long	.LM65
+ 2395 0231 15        		.byte	0x15
+ 2396 0232 00        		.byte	0x0
+ 2397 0233 05        		.uleb128 0x5
+ 2398 0234 02        		.byte	0x2
+ 2399 0235 0000 0000 		.long	.LM66
+ 2400 0239 15        		.byte	0x15
+ 2401 023a 00        		.byte	0x0
+ 2402 023b 05        		.uleb128 0x5
+ 2403 023c 02        		.byte	0x2
+ 2404 023d 0000 0000 		.long	.LM67
+ 2405 0241 16        		.byte	0x16
+ 2406 0242 00        		.byte	0x0
+ 2407 0243 05        		.uleb128 0x5
+ 2408 0244 02        		.byte	0x2
+ 2409 0245 0000 0000 		.long	.LM68
+ 2410 0249 15        		.byte	0x15
+ 2411 024a 00        		.byte	0x0
+ 2412 024b 05        		.uleb128 0x5
+ 2413 024c 02        		.byte	0x2
+ 2414 024d 0000 0000 		.long	.LM69
+ 2415 0251 15        		.byte	0x15
+ 2416 0252 00        		.byte	0x0
+ 2417 0253 05        		.uleb128 0x5
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 44
+
+
+ 2418 0254 02        		.byte	0x2
+ 2419 0255 0000 0000 		.long	.LM70
+ 2420 0259 15        		.byte	0x15
+ 2421 025a 00        		.byte	0x0
+ 2422 025b 05        		.uleb128 0x5
+ 2423 025c 02        		.byte	0x2
+ 2424 025d 0000 0000 		.long	.LM71
+ 2425 0261 15        		.byte	0x15
+ 2426 0262 00        		.byte	0x0
+ 2427 0263 05        		.uleb128 0x5
+ 2428 0264 02        		.byte	0x2
+ 2429 0265 0000 0000 		.long	.LM72
+ 2430 0269 16        		.byte	0x16
+ 2431 026a 00        		.byte	0x0
+ 2432 026b 05        		.uleb128 0x5
+ 2433 026c 02        		.byte	0x2
+ 2434 026d 0000 0000 		.long	.LM73
+ 2435 0271 15        		.byte	0x15
+ 2436 0272 00        		.byte	0x0
+ 2437 0273 05        		.uleb128 0x5
+ 2438 0274 02        		.byte	0x2
+ 2439 0275 0000 0000 		.long	.LM74
+ 2440 0279 15        		.byte	0x15
+ 2441 027a 00        		.byte	0x0
+ 2442 027b 05        		.uleb128 0x5
+ 2443 027c 02        		.byte	0x2
+ 2444 027d 0000 0000 		.long	.LM75
+ 2445 0281 15        		.byte	0x15
+ 2446 0282 00        		.byte	0x0
+ 2447 0283 05        		.uleb128 0x5
+ 2448 0284 02        		.byte	0x2
+ 2449 0285 0000 0000 		.long	.LM76
+ 2450 0289 15        		.byte	0x15
+ 2451 028a 00        		.byte	0x0
+ 2452 028b 05        		.uleb128 0x5
+ 2453 028c 02        		.byte	0x2
+ 2454 028d 0000 0000 		.long	.LM77
+ 2455 0291 15        		.byte	0x15
+ 2456 0292 00        		.byte	0x0
+ 2457 0293 05        		.uleb128 0x5
+ 2458 0294 02        		.byte	0x2
+ 2459 0295 0000 0000 		.long	.LM78
+ 2460 0299 18        		.byte	0x18
+ 2461 029a 00        		.byte	0x0
+ 2462 029b 05        		.uleb128 0x5
+ 2463 029c 02        		.byte	0x2
+ 2464 029d 0000 0000 		.long	.LM79
+ 2465 02a1 16        		.byte	0x16
+ 2466 02a2 00        		.byte	0x0
+ 2467 02a3 05        		.uleb128 0x5
+ 2468 02a4 02        		.byte	0x2
+ 2469 02a5 0000 0000 		.long	.LM80
+ 2470 02a9 16        		.byte	0x16
+ 2471 02aa 00        		.byte	0x0
+ 2472 02ab 05        		.uleb128 0x5
+ 2473 02ac 02        		.byte	0x2
+ 2474 02ad 0000 0000 		.long	.LM81
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 45
+
+
+ 2475 02b1 15        		.byte	0x15
+ 2476 02b2 00        		.byte	0x0
+ 2477 02b3 05        		.uleb128 0x5
+ 2478 02b4 02        		.byte	0x2
+ 2479 02b5 0000 0000 		.long	.LM82
+ 2480 02b9 15        		.byte	0x15
+ 2481 02ba 00        		.byte	0x0
+ 2482 02bb 05        		.uleb128 0x5
+ 2483 02bc 02        		.byte	0x2
+ 2484 02bd 0000 0000 		.long	.LM83
+ 2485 02c1 11        		.byte	0x11
+ 2486 02c2 00        		.byte	0x0
+ 2487 02c3 05        		.uleb128 0x5
+ 2488 02c4 02        		.byte	0x2
+ 2489 02c5 0000 0000 		.long	.LM84
+ 2490 02c9 1A        		.byte	0x1a
+ 2491 02ca 00        		.byte	0x0
+ 2492 02cb 05        		.uleb128 0x5
+ 2493 02cc 02        		.byte	0x2
+ 2494 02cd 0000 0000 		.long	.LM85
+ 2495 02d1 17        		.byte	0x17
+ 2496 02d2 00        		.byte	0x0
+ 2497 02d3 05        		.uleb128 0x5
+ 2498 02d4 02        		.byte	0x2
+ 2499 02d5 0000 0000 		.long	.LM86
+ 2500 02d9 17        		.byte	0x17
+ 2501 02da 00        		.byte	0x0
+ 2502 02db 05        		.uleb128 0x5
+ 2503 02dc 02        		.byte	0x2
+ 2504 02dd 0000 0000 		.long	.LM87
+ 2505 02e1 17        		.byte	0x17
+ 2506 02e2 00        		.byte	0x0
+ 2507 02e3 05        		.uleb128 0x5
+ 2508 02e4 02        		.byte	0x2
+ 2509 02e5 0000 0000 		.long	.LM88
+ 2510 02e9 16        		.byte	0x16
+ 2511 02ea 00        		.byte	0x0
+ 2512 02eb 05        		.uleb128 0x5
+ 2513 02ec 02        		.byte	0x2
+ 2514 02ed 0000 0000 		.long	.LM89
+ 2515 02f1 16        		.byte	0x16
+ 2516 02f2 00        		.byte	0x0
+ 2517 02f3 05        		.uleb128 0x5
+ 2518 02f4 02        		.byte	0x2
+ 2519 02f5 0000 0000 		.long	.LM90
+ 2520 02f9 15        		.byte	0x15
+ 2521 02fa 00        		.byte	0x0
+ 2522 02fb 05        		.uleb128 0x5
+ 2523 02fc 02        		.byte	0x2
+ 2524 02fd 0000 0000 		.long	.LM91
+ 2525 0301 12        		.byte	0x12
+ 2526 0302 00        		.byte	0x0
+ 2527 0303 05        		.uleb128 0x5
+ 2528 0304 02        		.byte	0x2
+ 2529 0305 0000 0000 		.long	.LM92
+ 2530 0309 1A        		.byte	0x1a
+ 2531 030a 00        		.byte	0x0
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 46
+
+
+ 2532 030b 05        		.uleb128 0x5
+ 2533 030c 02        		.byte	0x2
+ 2534 030d 0000 0000 		.long	.LM93
+ 2535 0311 19        		.byte	0x19
+ 2536 0312 00        		.byte	0x0
+ 2537 0313 05        		.uleb128 0x5
+ 2538 0314 02        		.byte	0x2
+ 2539 0315 0000 0000 		.long	.LM94
+ 2540 0319 15        		.byte	0x15
+ 2541 031a 00        		.byte	0x0
+ 2542 031b 05        		.uleb128 0x5
+ 2543 031c 02        		.byte	0x2
+ 2544 031d 0000 0000 		.long	.LM95
+ 2545 0321 12        		.byte	0x12
+ 2546 0322 00        		.byte	0x0
+ 2547 0323 05        		.uleb128 0x5
+ 2548 0324 02        		.byte	0x2
+ 2549 0325 0000 0000 		.long	.LM96
+ 2550 0329 1D        		.byte	0x1d
+ 2551 032a 00        		.byte	0x0
+ 2552 032b 05        		.uleb128 0x5
+ 2553 032c 02        		.byte	0x2
+ 2554 032d 0000 0000 		.long	.LM97
+ 2555 0331 17        		.byte	0x17
+ 2556 0332 00        		.byte	0x0
+ 2557 0333 05        		.uleb128 0x5
+ 2558 0334 02        		.byte	0x2
+ 2559 0335 0000 0000 		.long	.LM98
+ 2560 0339 15        		.byte	0x15
+ 2561 033a 00        		.byte	0x0
+ 2562 033b 05        		.uleb128 0x5
+ 2563 033c 02        		.byte	0x2
+ 2564 033d 0000 0000 		.long	.LM99
+ 2565 0341 15        		.byte	0x15
+ 2566 0342 00        		.byte	0x0
+ 2567 0343 05        		.uleb128 0x5
+ 2568 0344 02        		.byte	0x2
+ 2569 0345 0000 0000 		.long	.LM100
+ 2570 0349 32        		.byte	0x32
+ 2571 034a 00        		.byte	0x0
+ 2572 034b 05        		.uleb128 0x5
+ 2573 034c 02        		.byte	0x2
+ 2574 034d 0000 0000 		.long	.LM101
+ 2575 0351 15        		.byte	0x15
+ 2576 0352 00        		.byte	0x0
+ 2577 0353 05        		.uleb128 0x5
+ 2578 0354 02        		.byte	0x2
+ 2579 0355 0000 0000 		.long	.LM102
+ 2580 0359 03        		.byte	0x3
+ 2581 035a 64        		.sleb128 -28
+ 2582 035b 01        		.byte	0x1
+ 2583 035c 00        		.byte	0x0
+ 2584 035d 05        		.uleb128 0x5
+ 2585 035e 02        		.byte	0x2
+ 2586 035f 0000 0000 		.long	.LM103
+ 2587 0363 15        		.byte	0x15
+ 2588 0364 00        		.byte	0x0
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 47
+
+
+ 2589 0365 05        		.uleb128 0x5
+ 2590 0366 02        		.byte	0x2
+ 2591 0367 0000 0000 		.long	.LM104
+ 2592 036b 15        		.byte	0x15
+ 2593 036c 00        		.byte	0x0
+ 2594 036d 05        		.uleb128 0x5
+ 2595 036e 02        		.byte	0x2
+ 2596 036f 0000 0000 		.long	.LM105
+ 2597 0373 15        		.byte	0x15
+ 2598 0374 00        		.byte	0x0
+ 2599 0375 05        		.uleb128 0x5
+ 2600 0376 02        		.byte	0x2
+ 2601 0377 0000 0000 		.long	.LM106
+ 2602 037b 16        		.byte	0x16
+ 2603 037c 00        		.byte	0x0
+ 2604 037d 05        		.uleb128 0x5
+ 2605 037e 02        		.byte	0x2
+ 2606 037f 0000 0000 		.long	.LM107
+ 2607 0383 17        		.byte	0x17
+ 2608 0384 00        		.byte	0x0
+ 2609 0385 05        		.uleb128 0x5
+ 2610 0386 02        		.byte	0x2
+ 2611 0387 0000 0000 		.long	.LM108
+ 2612 038b 18        		.byte	0x18
+ 2613 038c 00        		.byte	0x0
+ 2614 038d 05        		.uleb128 0x5
+ 2615 038e 02        		.byte	0x2
+ 2616 038f 0000 0000 		.long	.LM109
+ 2617 0393 15        		.byte	0x15
+ 2618 0394 00        		.byte	0x0
+ 2619 0395 05        		.uleb128 0x5
+ 2620 0396 02        		.byte	0x2
+ 2621 0397 0000 0000 		.long	.LM110
+ 2622 039b 15        		.byte	0x15
+ 2623 039c 00        		.byte	0x0
+ 2624 039d 05        		.uleb128 0x5
+ 2625 039e 02        		.byte	0x2
+ 2626 039f 0000 0000 		.long	.LM111
+ 2627 03a3 15        		.byte	0x15
+ 2628 03a4 00        		.byte	0x0
+ 2629 03a5 05        		.uleb128 0x5
+ 2630 03a6 02        		.byte	0x2
+ 2631 03a7 0000 0000 		.long	.LM112
+ 2632 03ab 15        		.byte	0x15
+ 2633 03ac 00        		.byte	0x0
+ 2634 03ad 05        		.uleb128 0x5
+ 2635 03ae 02        		.byte	0x2
+ 2636 03af 0000 0000 		.long	.LM113
+ 2637 03b3 15        		.byte	0x15
+ 2638 03b4 00        		.byte	0x0
+ 2639 03b5 05        		.uleb128 0x5
+ 2640 03b6 02        		.byte	0x2
+ 2641 03b7 0000 0000 		.long	.LM114
+ 2642 03bb 17        		.byte	0x17
+ 2643 03bc 00        		.byte	0x0
+ 2644 03bd 05        		.uleb128 0x5
+ 2645 03be 02        		.byte	0x2
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 48
+
+
+ 2646 03bf 0000 0000 		.long	.LM115
+ 2647 03c3 15        		.byte	0x15
+ 2648 03c4 00        		.byte	0x0
+ 2649 03c5 05        		.uleb128 0x5
+ 2650 03c6 02        		.byte	0x2
+ 2651 03c7 0000 0000 		.long	.LM116
+ 2652 03cb 15        		.byte	0x15
+ 2653 03cc 00        		.byte	0x0
+ 2654 03cd 05        		.uleb128 0x5
+ 2655 03ce 02        		.byte	0x2
+ 2656 03cf 0000 0000 		.long	.LM117
+ 2657 03d3 18        		.byte	0x18
+ 2658 03d4 00        		.byte	0x0
+ 2659 03d5 05        		.uleb128 0x5
+ 2660 03d6 02        		.byte	0x2
+ 2661 03d7 0000 0000 		.long	.LM118
+ 2662 03db 15        		.byte	0x15
+ 2663 03dc 00        		.byte	0x0
+ 2664 03dd 05        		.uleb128 0x5
+ 2665 03de 02        		.byte	0x2
+ 2666 03df 0000 0000 		.long	.LM119
+ 2667 03e3 15        		.byte	0x15
+ 2668 03e4 00        		.byte	0x0
+ 2669 03e5 05        		.uleb128 0x5
+ 2670 03e6 02        		.byte	0x2
+ 2671 03e7 0000 0000 		.long	.LM120
+ 2672 03eb 15        		.byte	0x15
+ 2673 03ec 00        		.byte	0x0
+ 2674 03ed 05        		.uleb128 0x5
+ 2675 03ee 02        		.byte	0x2
+ 2676 03ef 0000 0000 		.long	.LM121
+ 2677 03f3 19        		.byte	0x19
+ 2678 03f4 00        		.byte	0x0
+ 2679 03f5 05        		.uleb128 0x5
+ 2680 03f6 02        		.byte	0x2
+ 2681 03f7 0000 0000 		.long	.LM122
+ 2682 03fb 01        		.byte	0x1
+ 2683 03fc 00        		.byte	0x0
+ 2684 03fd 05        		.uleb128 0x5
+ 2685 03fe 02        		.byte	0x2
+ 2686 03ff 0000 0000 		.long	.LM123
+ 2687 0403 0D        		.byte	0xd
+ 2688 0404 00        		.byte	0x0
+ 2689 0405 05        		.uleb128 0x5
+ 2690 0406 02        		.byte	0x2
+ 2691 0407 0000 0000 		.long	.LM124
+ 2692 040b 15        		.byte	0x15
+ 2693 040c 00        		.byte	0x0
+ 2694 040d 05        		.uleb128 0x5
+ 2695 040e 02        		.byte	0x2
+ 2696 040f 0000 0000 		.long	.LM125
+ 2697 0413 1F        		.byte	0x1f
+ 2698 0414 00        		.byte	0x0
+ 2699 0415 05        		.uleb128 0x5
+ 2700 0416 02        		.byte	0x2
+ 2701 0417 0000 0000 		.long	.LM126
+ 2702 041b 18        		.byte	0x18
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 49
+
+
+ 2703 041c 00        		.byte	0x0
+ 2704 041d 05        		.uleb128 0x5
+ 2705 041e 02        		.byte	0x2
+ 2706 041f 0000 0000 		.long	.LM127
+ 2707 0423 16        		.byte	0x16
+ 2708 0424 00        		.byte	0x0
+ 2709 0425 05        		.uleb128 0x5
+ 2710 0426 02        		.byte	0x2
+ 2711 0427 0000 0000 		.long	.LM128
+ 2712 042b 15        		.byte	0x15
+ 2713 042c 00        		.byte	0x0
+ 2714 042d 05        		.uleb128 0x5
+ 2715 042e 02        		.byte	0x2
+ 2716 042f 0000 0000 		.long	.LM129
+ 2717 0433 15        		.byte	0x15
+ 2718 0434 00        		.byte	0x0
+ 2719 0435 05        		.uleb128 0x5
+ 2720 0436 02        		.byte	0x2
+ 2721 0437 0000 0000 		.long	.Letext0
+ 2722 043b 00        		.byte	0x0
+ 2723 043c 01        		.uleb128 0x1
+ 2724 043d 01        		.byte	0x1
+ 2725               	.LELT0:
+ 2726 043e 1600 0000 		.section	.debug_str,"MS",@progbits,1
+ 2726      0200 1000 
+ 2726      0000 0101 
+ 2726      FB0E 0A00 
+ 2726      0101 0101 
+ 2727               	.LASF7:
+ 2728 0000 4672 6F6E 		.string	"FrontLED"
+ 2728      744C 4544 
+ 2728      00
+ 2729               	.LASF25:
+ 2730 0009 4F64 6F6D 		.string	"OdometrieData"
+ 2730      6574 7269 
+ 2730      6544 6174 
+ 2730      6100 
+ 2731               	.LASF20:
+ 2732 0017 6C65 6674 		.string	"left"
+ 2732      00
+ 2733               	.LASF9:
+ 2734 001c 7374 6174 		.string	"status"
+ 2734      7573 00
+ 2735               	.LASF15:
+ 2736 0023 536C 6565 		.string	"Sleep"
+ 2736      7000 
+ 2737               	.LASF42:
+ 2738 0029 4765 7454 		.string	"GetTime"
+ 2738      696D 6500 
+ 2739               	.LASF24:
+ 2740 0031 6461 7461 		.string	"data"
+ 2740      00
+ 2741               	.LASF41:
+ 2742 0036 506F 6C6C 		.string	"PollSwitch"
+ 2742      5377 6974 
+ 2742      6368 00
+ 2743               	.LASF28:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 50
+
+
+ 2744 0041 5365 7252 		.string	"SerRead"
+ 2744      6561 6400 
+ 2745               	.LASF1:
+ 2746 0049 756E 7369 		.string	"unsigned char"
+ 2746      676E 6564 
+ 2746      2063 6861 
+ 2746      7200 
+ 2747               	.LASF4:
+ 2748 0057 6C6F 6E67 		.string	"long unsigned int"
+ 2748      2075 6E73 
+ 2748      6967 6E65 
+ 2748      6420 696E 
+ 2748      7400 
+ 2749               	.LASF39:
+ 2750 0069 6173 7572 		.string	"asuro.c"
+ 2750      6F2E 6300 
+ 2751               	.LASF38:
+ 2752 0071 474E 5520 		.string	"GNU C 4.3.3"
+ 2752      4320 342E 
+ 2752      332E 3300 
+ 2753               	.LASF35:
+ 2754 007d 6475 7261 		.string	"duration"
+ 2754      7469 6F6E 
+ 2754      00
+ 2755               	.LASF11:
+ 2756 0086 7269 6768 		.string	"right_dir"
+ 2756      745F 6469 
+ 2756      7200 
+ 2757               	.LASF17:
+ 2758 0090 5374 6174 		.string	"StatusLED"
+ 2758      7573 4C45 
+ 2758      4400 
+ 2759               	.LASF16:
+ 2760 009a 7469 6D65 		.string	"time72kHz"
+ 2760      3732 6B48 
+ 2760      7A00 
+ 2761               	.LASF13:
+ 2762 00a4 6C65 6674 		.string	"left_speed"
+ 2762      5F73 7065 
+ 2762      6564 00
+ 2763               	.LASF19:
+ 2764 00af 636F 6C6F 		.string	"color"
+ 2764      7200 
+ 2765               	.LASF8:
+ 2766 00b5 4D6F 746F 		.string	"MotorDir"
+ 2766      7244 6972 
+ 2766      00
+ 2767               	.LASF32:
+ 2768 00be 5374 6172 		.string	"StartSwitch"
+ 2768      7453 7769 
+ 2768      7463 6800 
+ 2769               	.LASF2:
+ 2770 00ca 756E 7369 		.string	"unsigned int"
+ 2770      676E 6564 
+ 2770      2069 6E74 
+ 2770      00
+ 2771               	.LASF21:
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 51
+
+
+ 2772 00d7 7269 6768 		.string	"right"
+ 2772      7400 
+ 2773               	.LASF6:
+ 2774 00dd 6C6F 6E67 		.string	"long long unsigned int"
+ 2774      206C 6F6E 
+ 2774      6720 756E 
+ 2774      7369 676E 
+ 2774      6564 2069 
+ 2775               	.LASF40:
+ 2776 00f4 443A 5C50 		.string	"D:\\Projects\\ASURO\\first"
+ 2776      726F 6A65 
+ 2776      6374 735C 
+ 2776      4153 5552 
+ 2776      4F5C 6669 
+ 2777               	.LASF26:
+ 2778 010c 5365 7257 		.string	"SerWrite"
+ 2778      7269 7465 
+ 2778      00
+ 2779               	.LASF10:
+ 2780 0115 6C65 6674 		.string	"left_dir"
+ 2780      5F64 6972 
+ 2780      00
+ 2781               	.LASF30:
+ 2782 011e 7469 6D65 		.string	"time"
+ 2782      00
+ 2783               	.LASF34:
+ 2784 0123 4D73 6C65 		.string	"Msleep"
+ 2784      6570 00
+ 2785               	.LASF5:
+ 2786 012a 6C6F 6E67 		.string	"long long int"
+ 2786      206C 6F6E 
+ 2786      6720 696E 
+ 2786      7400 
+ 2787               	.LASF29:
+ 2788 0138 7469 6D65 		.string	"timeout"
+ 2788      6F75 7400 
+ 2789               	.LASF12:
+ 2790 0140 4D6F 746F 		.string	"MotorSpeed"
+ 2790      7253 7065 
+ 2790      6564 00
+ 2791               	.LASF23:
+ 2792 014b 4C69 6E65 		.string	"LineData"
+ 2792      4461 7461 
+ 2792      00
+ 2793               	.LASF22:
+ 2794 0154 496E 6974 		.string	"Init"
+ 2794      00
+ 2795               	.LASF18:
+ 2796 0159 4261 636B 		.string	"BackLED"
+ 2796      4C45 4400 
+ 2797               	.LASF31:
+ 2798 0161 5F5F 7665 		.string	"__vector_3"
+ 2798      6374 6F72 
+ 2798      5F33 00
+ 2799               	.LASF37:
+ 2800 016c 7469 6D65 		.string	"timebase"
+ 2800      6261 7365 
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 52
+
+
+ 2800      00
+ 2801               	.LASF3:
+ 2802 0175 6C6F 6E67 		.string	"long int"
+ 2802      2069 6E74 
+ 2802      00
+ 2803               	.LASF33:
+ 2804 017e 5374 6F70 		.string	"StopSwitch"
+ 2804      5377 6974 
+ 2804      6368 00
+ 2805               	.LASF0:
+ 2806 0189 7369 676E 		.string	"signed char"
+ 2806      6564 2063 
+ 2806      6861 7200 
+ 2807               	.LASF27:
+ 2808 0195 6C65 6E67 		.string	"length"
+ 2808      7468 00
+ 2809               	.LASF36:
+ 2810 019c 636F 756E 		.string	"count72kHz"
+ 2810      7437 326B 
+ 2810      487A 00
+ 2811               	.LASF14:
+ 2812 01a7 7269 6768 		.string	"right_speed"
+ 2812      745F 7370 
+ 2812      6565 6400 
+ 2813               	.global __do_clear_bss
+GAS LISTING C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s 			page 53
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 asuro.c
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:2      *ABS*:0000003f __SREG__
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:3      *ABS*:0000003e __SP_H__
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:4      *ABS*:0000003d __SP_L__
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:5      *ABS*:00000034 __CCP__
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:18     .text:00000000 __vector_3
+                            *COM*:00000001 count72kHz
+                            *COM*:00000004 timebase
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:63     .text:00000054 MotorSpeed
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:86     .text:00000062 MotorDir
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:110    .text:00000074 StatusLED
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:148    .text:0000009a FrontLED
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:171    .text:000000ac BackLED
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:212    .text:000000d2 Init
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:307    .text:0000012e LineData
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:362    .text:0000016a OdometrieData
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:423    .text:000001ae SerWrite
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:460    .text:000001ca SerRead
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:536    .text:0000021c PollSwitch
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:611    .text:00000280 StartSwitch
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:635    .text:00000292 StopSwitch
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:651    .text:0000029a Sleep
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:673    .text:000002aa Msleep
+C:\Users\WILLOMAE\AppData\Local\Temp/cclfF8bs.s:713    .text:000002ca GetTime
+
+UNDEFINED SYMBOLS
+__floatunsisf
+__divsf3
+__subsf3
+__mulsf3
+__addsf3
+__fixunssfsi
+__udivmodsi4
+__do_clear_bss
